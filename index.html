@@ -84,10 +84,10 @@
     .section{padding: 3.4rem 0}
     .section h2{font-size: clamp(1.6rem, 1.8vw + 1rem, 2rem); margin:0 0 .6rem}
     .section .sub{color:#6b7280; max-width:70ch}
-    .badges{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:1.2rem; margin-top:1.6rem}
-    .badge{background:#fff; border:1px solid var(--border); border-radius:18px; padding:1.1rem; text-align:center; box-shadow:var(--shadow)}
+    /* .badges{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:1.2rem; margin-top:1.6rem}
+    .badge{background:#fff; border:1px solid var(--border); border-radius:18px; padding:1.1rem; text-align:center; box-shadow:var(--shadow)} */
     .hex{width:90px; height:90px; margin-inline:auto;}
-
+ 
     /* Diagram block */
     .diagram{margin-top:1.6rem; border:1px dashed #e5e7eb; border-radius:18px; padding:1rem; background:
       radial-gradient(1000px 500px at -10% 120%, rgba(249,115,22,.08), transparent 60%),
@@ -171,10 +171,32 @@
   }
   
   .badges {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.2rem;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.6rem;
+}
+.badge {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  
+  /* 🧭 Center everything */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.badge img {
+  width: 70%;
+  max-width: 100px; /* keep consistent size even on big screens */
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
   
   .foot-grid {
     display: grid;
@@ -205,7 +227,7 @@
     <div class="container nav">
       <a class="brand" href="#">
         <img src="img/logo.png" alt="AWS Block Learner logo" class="logo-img">
-        <span>AWS Block Learner</span>
+        <span>Cloud Blocks</span>
       </a>
       <nav class="nav-menu">
         <div class="nav-links">
@@ -241,40 +263,29 @@
   <section class="hero" id="home">
     <div class="container wrap">
       <div>
-        <div class="eyebrow">Interactive AWS learning</div>
-        <h1>AWS Block Learner</h1>
-        <p class="lead">Learn AWS Cloud in an interactive way. Build real solutions from zero with blocks, practice for exams, and learn like a game.</p>
+        <div class="eyebrow">The first vibe clouding tool</div>
+        <h1>Cloud Blocks</h1>
+        <p class="lead">Create real cloud environments instantly. Use Cloud Architect AI Agent to spin up solutions, experiment safely, and architect like a pro.</p>
         <div class="hero-cta">
-          <a class="btn" href="#pricing">
+          <a class="btn" href="http://localhost:3000/game">
             <span>Become early adopter</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a class="btn secondary" href="#features">Explore features</a>
         </div>
       </div>
-      <div class="hero-ill" aria-hidden="true">
-        <!-- Cute workstation illustration-ish with blocks -->
-        <svg viewBox="0 0 320 240">
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffd1b5"/><stop offset="1" stop-color="#ff8f59"/></linearGradient>
-          </defs>
-          <rect x="24" y="36" width="272" height="168" rx="14" fill="#fff" stroke="#eef2f7"/>
-          <rect x="44" y="60" width="64" height="48" rx="8" fill="url(#g1)"/>
-          <rect x="116" y="60" width="64" height="48" rx="8" fill="#fde68a"/>
-          <rect x="188" y="60" width="64" height="48" rx="8" fill="#c7d2fe"/>
-          <rect x="44" y="116" width="64" height="48" rx="8" fill="#bbf7d0"/>
-          <rect x="116" y="116" width="64" height="48" rx="8" fill="#fecaca"/>
-          <rect x="188" y="116" width="64" height="48" rx="8" fill="#bae6fd"/>
-          <circle cx="280" cy="48" r="6" fill="#ff7a45"/>
-          <circle cx="262" cy="48" r="6" fill="#f59e0b"/>
-          <circle cx="244" cy="48" r="6" fill="#10b981"/>
-        </svg>
+      <div class="hero-ill" aria-hidden="true" style="aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; width: 100%; max-width: 900px; margin-inline: auto;">
+        <img 
+          alt="Cloud Blocks real environment preview" 
+          src="img/chat2.png" 
+          style="width: 100%; height: 100%; object-fit: contain; display: block;"
+        />
       </div>
     </div>
 
     <div class="container ribbon">
       <div class="card">
-        <p><strong>AWS Block Learner</strong> is a platform that allows you to learn AWS in an interactive way.</p>
+        <p><strong>Cloud Blocks</strong> is your DevOps CoPilot that allows you to build cloud solutions effectively.</p>
         <a class="link" href="#features">Learn more →</a>
       </div>
     </div>
@@ -288,8 +299,8 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
         </span>
         <div>
-          <h4>No tricky documentation</h4>
-          <p>Skip the maze — learn by doing with bite‑size blocks.</p>
+          <h4>Auto-generated diagram</h4>
+          <p>Get explainable diagarm of each service that you need.</p>
         </div>
       </article>
       <article class="feat">
@@ -297,8 +308,8 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5-5 5 5"/></svg>
         </span>
         <div>
-          <h4>Interactive learner‑game</h4>
-          <p>Play through scenarios and unlock skills.</p>
+          <h4>Cloud agnostic</h4>
+          <p>Choose from variety of clouds where you want to proceed.</p>
         </div>
       </article>
       <article class="feat">
@@ -306,8 +317,8 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M8 21h8M12 17V3"/></svg>
         </span>
         <div>
-          <h4>Build as a Solution Architect</h4>
-          <p>Design solutions with diagrams and best practices.</p>
+          <h4>Terraform generation</h4>
+          <p>Get generated Terraform scripts for your easily deployment.</p>
         </div>
       </article>
       <article class="feat">
@@ -315,8 +326,8 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
         </span>
         <div>
-          <h4>Exam‑style cases</h4>
-          <p>Practice with real‑world cases and get ready to certify.</p>
+          <h4>Build for your needs</h4>
+          <p>Connect your account or use solution instantly on our servers.</p>
         </div>
       </article>
     </div>
@@ -324,36 +335,31 @@
 
   <!-- Certifications -->
   <section id="certs" class="section container">
-    <h2>Achieve AWS certifications</h2>
-    <p class="sub">Solution Architect, Cloud Practitioner, Developer and more.</p>
+    <h2>Supported clouds</h2>
+    <p class="sub">AWS, Azure, GCP, and more.</p>
     <div class="badges">
       <div class="badge">
-        <svg class="hex" viewBox="0 0 100 100">
-          <polygon points="50,3 95,27 95,73 50,97 5,73 5,27" fill="#e0e7ff" stroke="#c7d2fe"/>
-        </svg>
-        <h4>Solutions Architect — Associate</h4>
+        <img src="img/aws-icon.png" alt="Mountain scene">
       </div>
       <div class="badge">
-        <svg class="hex" viewBox="0 0 100 100">
-          <polygon points="50,3 95,27 95,73 50,97 5,73 5,27" fill="#dcfce7" stroke="#bbf7d0"/>
-        </svg>
-        <h4>Cloud Practitioner — Foundational</h4>
+        <img src="img/azure.png" alt="Mountain scene">
       </div>
       <div class="badge">
-        <svg class="hex" viewBox="0 0 100 100">
-          <polygon points="50,3 95,27 95,73 50,97 5,73 5,27" fill="#bae6fd" stroke="#93c5fd"/>
-        </svg>
-        <h4>Developer — Associate</h4>
+        <img src="img/gcp.png" alt="Mountain scene">
       </div>
     </div>
   </section>
 
   <!-- Architect diagram -->
   <section id="architect" class="section container">
-    <h2>Become a Solution Architect</h2>
-    <p class="sub">Learn how to build real solutions in diagrams with AWS services in an interactive way from zero level.</p>
+    <h2>Build like a Pro Solution Architect</h2>
+    <p class="sub">Describe what you need to build -> get fully diagram for different cloud environments -> observe prices -> deploy into your cloud account.</p>
     <div class="diagram">
-      <img alt="Example architecture diagram" src="img/game.png" style="width:100%; height:auto; border-radius:16px;"/>
+      <div style="position: relative; padding-bottom: 49.21875%; height: 0;">
+        <iframe src="https://www.loom.com/embed/43e5400108dd4189b74018675ea439eb?sid=20bc81e4-0844-442c-9cd6-ed3965a53381" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+
+      </iframe>
+      </div>
     </div>
   </section>
 
@@ -398,9 +404,9 @@
       <div class="foot">
         <a class="brand" href="#">
           <img src="img/logo.png" alt="AWS Block Learner logo" class="logo-img">
-          <span>AWS Block Learner</span>
+          <span>Cloud Blocks</span>
         </a>
-        <p style="color:#6b7280; max-width:46ch; margin:.6rem 0 0">Over <strong>3,000+</strong> people have subscribed. Learn AWS by building with blocks.</p>
+        <p style="color:#6b7280; max-width:46ch; margin:.6rem 0 0">Over <strong>3,000+</strong> people have subscribed.</p>
       </div>
       <div class="foot">
         <h5>Links</h5>
@@ -428,7 +434,7 @@
         </form>
       </div>
     </div>
-    <div class="container copyright">© <span id="y"></span> aws‑blc. All rights reserved.</div>
+    <div class="container copyright">© <span id="y"></span> blc. All rights reserved.</div>
   </footer>
 
   <script>
