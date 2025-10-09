@@ -391,8 +391,8 @@
     <div class="container inner">
       <h2>Leave your email for future updates</h2>
       <p style="opacity:.9">Try demo for 7 days with full features.</p>
-      <form class="field" onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch.'); this.reset();">
-        <input class="input" type="email" required placeholder="email" aria-label="Email" />
+      <form id="subscribe-form" class="field">
+        <input id="email-input" class="input" type="email" required placeholder="email" aria-label="Email" />
         <button class="btn" type="submit">Subscribe</button>
       </form>
     </div>
@@ -442,3 +442,44 @@
   </script>
 </body>
 </html>
+
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init('4SYMi98c8zlBSQXnp'); 
+   })();
+</script>
+
+<script>
+  const form = document.getElementById('subscribe-form');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email-input').value;
+  
+    emailjs.send('service_6pgksdi', 'template_ld3y9nd', {
+      user_email: email
+    })
+    .then(() => {
+      emailjs.send('service_6pgksdi', 'template_l21ckqw', {
+        user_email: email
+      })
+      .then(() => {
+        alert("Thanks! We'll be in touch.");
+        form.reset();
+      })
+      .catch((err) => {
+      alert("Oops, something went wrong. Try again!");
+      console.error(err);
+    });
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("Oops, something went wrong. Try again!");
+    });
+
+  });
+  </script>
+  
