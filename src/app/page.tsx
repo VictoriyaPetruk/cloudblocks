@@ -1,19 +1,11 @@
+import Script from "next/script";
+
 export default function Home() {
   return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cloud Blocks — DevOps Co-Pilot</title>
-  <meta name="description" content="Cloud Blocks — AI Cloud Arcchitect Agent, building real solutions from zero." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
     :root{
       --bg: #ffffff;
       --text: #111827; /* slate-900 */
@@ -235,9 +227,12 @@ export default function Home() {
 }
 
   
-  </style>
-</head>
-<body>
+  `,
+        }}
+      />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
   <!-- Header -->
   <header>
     <div class="container nav">
@@ -468,75 +463,92 @@ export default function Home() {
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
-</body>
-</html>
-
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init('4SYMi98c8zlBSQXnp'); 
-   })();
-</script>
-
-<script>
-  const form = document.getElementById('subscribe-form');
-  let isSubmitting = false;
-  
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Prevent double submission
-    if (isSubmitting) {
-      return;
-    }
-    
-    const email = document.getElementById('email-input').value;
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.textContent;
-    
-    // Disable button and set submitting state
-    isSubmitting = true;
-    submitButton.disabled = true;
-    submitButton.textContent = 'Submitting...';
-  
-    // Send first email (subscription)
-    let firstEmailSent = false;
-    emailjs.send('service_6pgksdi', 'template_ld3y9nd', {
-      user_email: email
-    })
-    .then(() => {
-      firstEmailSent = true;
-      // Send second email (confirmation) only if first succeeds
-      return emailjs.send('service_6pgksdi', 'template_l21ckqw', {
-        user_email: email
-      });
-    })
-    .then(() => {
-      alert("Thanks! We'll be in touch.");
-      form.reset();
-      isSubmitting = false;
-      submitButton.disabled = false;
-      submitButton.textContent = originalButtonText;
-    })
-    .catch((err) => {
-      console.error('EmailJS Error:', err);
-      // If first email succeeded but second failed with 422, still show success
-      if (firstEmailSent && err.status === 422) {
-        console.warn('Second email (confirmation) failed with 422 - subscription email was sent successfully');
-        alert("Thanks! We'll be in touch.");
-        form.reset();
-      } else {
-        // First email failed or other error
-        alert("Oops, something went wrong. Try again!");
-      }
-      isSubmitting = false;
-      submitButton.disabled = false;
-      submitButton.textContent = originalButtonText;
-    });
-  });
-  </script>
-      `,
-      }}
-    />
+        `,
+        }}
+      />
+      <Script
+        src='https://cdn.emailjs.com/dist/email.min.js'
+        strategy='afterInteractive'
+        onLoad={() => {
+          if (typeof window !== "undefined" && (window as any).emailjs) {
+            (window as any).emailjs.init("4SYMi98c8zlBSQXnp");
+          }
+        }}
+      />
+      <Script
+        id='emailjs-form-handler'
+        strategy='afterInteractive'
+        dangerouslySetInnerHTML={{
+          __html: `
+            document.addEventListener('DOMContentLoaded', function() {
+              if (typeof emailjs === 'undefined') {
+                console.error('EmailJS not loaded');
+                return;
+              }
+              
+              emailjs.init('4SYMi98c8zlBSQXnp');
+              
+              const form = document.getElementById('subscribe-form');
+              if (!form) return;
+              
+              let isSubmitting = false;
+              
+              form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Prevent double submission
+                if (isSubmitting) {
+                  return;
+                }
+                
+                const email = document.getElementById('email-input').value;
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
+                
+                // Disable button and set submitting state
+                isSubmitting = true;
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+              
+                // Send first email (subscription)
+                let firstEmailSent = false;
+                emailjs.send('service_6pgksdi', 'template_ld3y9nd', {
+                  user_email: email
+                })
+                .then(() => {
+                  firstEmailSent = true;
+                  // Send second email (confirmation) only if first succeeds
+                  return emailjs.send('service_6pgksdi', 'template_l21ckqw', {
+                    user_email: email
+                  });
+                })
+                .then(() => {
+                  alert("Thanks! We'll be in touch.");
+                  form.reset();
+                  isSubmitting = false;
+                  submitButton.disabled = false;
+                  submitButton.textContent = originalButtonText;
+                })
+                .catch((err) => {
+                  console.error('EmailJS Error:', err);
+                  // If first email succeeded but second failed with 422, still show success
+                  if (firstEmailSent && err.status === 422) {
+                    console.warn('Second email (confirmation) failed with 422 - subscription email was sent successfully');
+                    alert("Thanks! We'll be in touch.");
+                    form.reset();
+                  } else {
+                    // First email failed or other error
+                    alert("Oops, something went wrong. Try again!");
+                  }
+                  isSubmitting = false;
+                  submitButton.disabled = false;
+                  submitButton.textContent = originalButtonText;
+                });
+              });
+            });
+          `,
+        }}
+      />
+    </>
   );
 }
