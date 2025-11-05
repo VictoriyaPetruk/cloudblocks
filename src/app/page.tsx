@@ -414,7 +414,7 @@ export default function Home() {
     <div class="container inner">
       <h2>Leave your email for future updates</h2>
       <p style="opacity:.9; margin-bottom: 1rem;">Try demo for 7 days with full features.</p>
-      <form id="subscribe-form" class="field">
+      <form id="subscribe-form" class="field" onsubmit="return false;">
         <input id="email-input" class="input" type="email" required placeholder="Email" aria-label="Email" />
         <button class="btn" type="submit">Subscribe</button>
       </form>
@@ -469,46 +469,63 @@ export default function Home() {
       <Script
         src='https://cdn.emailjs.com/dist/email.min.js'
         strategy='afterInteractive'
-        onLoad={() => {
-          if (typeof window !== "undefined" && (window as any).emailjs) {
-            (window as any).emailjs.init("4SYMi98c8zlBSQXnp");
-          }
-        }}
       />
       <Script
         id='emailjs-form-handler'
         strategy='afterInteractive'
         dangerouslySetInnerHTML={{
           __html: `
-            document.addEventListener('DOMContentLoaded', function() {
+            let formHandlerAttached = false;
+            let isSubmitting = false;
+            
+            function initEmailJS() {
               if (typeof emailjs === 'undefined') {
-                console.error('EmailJS not loaded');
+                // Wait a bit and try again
+                setTimeout(initEmailJS, 100);
                 return;
               }
               
               emailjs.init('4SYMi98c8zlBSQXnp');
-              
+            }
+            
+            function setupFormHandler() {
               const form = document.getElementById('subscribe-form');
-              if (!form) return;
+              if (!form || formHandlerAttached) return;
               
-              let isSubmitting = false;
+              formHandlerAttached = true;
+              
+              // Remove any existing inline onsubmit handler
+              form.removeAttribute('onsubmit');
               
               form.addEventListener('submit', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
                 
                 // Prevent double submission
                 if (isSubmitting) {
-                  return;
+                  return false;
                 }
                 
                 const email = document.getElementById('email-input').value;
                 const submitButton = form.querySelector('button[type="submit"]');
+                if (!submitButton) return false;
+                
                 const originalButtonText = submitButton.textContent;
                 
                 // Disable button and set submitting state
                 isSubmitting = true;
                 submitButton.disabled = true;
                 submitButton.textContent = 'Submitting...';
+              
+                // Check if EmailJS is loaded before sending
+                if (typeof emailjs === 'undefined') {
+                  alert("Please wait, the form is still loading...");
+                  isSubmitting = false;
+                  submitButton.disabled = false;
+                  submitButton.textContent = originalButtonText;
+                  return false;
+                }
               
                 // Send first email (subscription)
                 let firstEmailSent = false;
@@ -544,8 +561,37 @@ export default function Home() {
                   submitButton.disabled = false;
                   submitButton.textContent = originalButtonText;
                 });
-              });
-            });
+                
+                return false;
+              }, true); // Use capture phase to catch event early
+            }
+            
+            // Try multiple times to ensure form handler is attached
+            function trySetupHandler() {
+              setupFormHandler();
+              // Try again after a delay if handler wasn't attached
+              if (!formHandlerAttached) {
+                setTimeout(trySetupHandler, 100);
+              }
+            }
+            
+            // Set up form handler immediately (don't wait for DOMContentLoaded)
+            function init() {
+              trySetupHandler();
+              initEmailJS();
+            }
+            
+            // Try to set up immediately if DOM is ready
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', init);
+            } else {
+              // DOM is already loaded
+              init();
+            }
+            
+            // Also try after a delay to catch form that might be added later
+            setTimeout(trySetupHandler, 200);
+            setTimeout(trySetupHandler, 500);
           `,
         }}
       />
