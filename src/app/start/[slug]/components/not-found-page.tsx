@@ -1,19 +1,7 @@
-"use client";
-
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function StartPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    // Redirect to home if accessed without a slug
-    router.push("/");
-  }, [router]);
-
-  // Show a message while redirecting
+export default function NotFoundPage() {
   return (
     <div className='min-h-screen bg-white flex items-center justify-center'>
       <div className='text-center max-w-md px-6'>
@@ -26,11 +14,11 @@ export default function StartPage() {
             className='mx-auto rounded-md'
           />
         </div>
-        <h1 className='text-4xl font-bold text-gray-900 mb-4 leading-tight'>
-          Redirecting...
+        <h1 className='text-4xl font-bold text-black mb-4 leading-tight'>
+          Page Not Found
         </h1>
         <p className='text-base text-gray-600 mb-8'>
-          This page requires a valid access code.
+          The page you're looking for doesn't exist.
         </p>
         <Link
           href='/'
@@ -42,3 +30,4 @@ export default function StartPage() {
     </div>
   );
 }
+
