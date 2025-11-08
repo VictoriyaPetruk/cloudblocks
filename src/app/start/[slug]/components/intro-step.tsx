@@ -24,7 +24,13 @@ export default function IntroStep({
     >
       <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight'>
         Great to see you at{" "}
-        <span className='inline-block bg-gradient-to-r from-orange-600 to-orange-500 text-white px-4 py-2.5 rounded-lg text-4xl sm:text-5xl lg:text-6xl font-bold align-middle leading-tight'>
+        <span
+          className='inline-block text-white px-4 py-2.5 rounded-lg text-4xl sm:text-5xl lg:text-6xl font-bold align-middle leading-tight'
+          style={{
+            background:
+              "linear-gradient(to bottom, rgb(251, 146, 60), rgb(249, 115, 22))",
+          }}
+        >
           Web Summit!
         </span>
       </h1>
