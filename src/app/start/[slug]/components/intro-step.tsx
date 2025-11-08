@@ -18,7 +18,10 @@ export default function IntroStep({
   onWaitlistClick,
 }: IntroStepProps) {
   return (
-    <div className='text-center w-full max-w-4xl mx-auto relative z-10'>
+    <div
+      className='text-center w-full max-w-4xl mx-auto relative z-10'
+      suppressHydrationWarning
+    >
       <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight'>
         Great to see you at{" "}
         <span className='inline-block bg-gradient-to-r from-orange-600 to-orange-500 text-white px-4 py-2.5 rounded-lg text-4xl sm:text-5xl lg:text-6xl font-bold align-middle leading-tight'>
@@ -108,8 +111,9 @@ export default function IntroStep({
             </svg>
           </div>
           <p className='text-gray-700 text-lg leading-relaxed'>
-            <strong className='font-bold text-gray-900'>Describe:</strong> Simply
-            tell our AI what you need to build (or connect your existing project).
+            <strong className='font-bold text-gray-900'>Describe:</strong>{" "}
+            Simply tell our AI what you need to build (or connect your existing
+            project).
           </p>
         </div>
 
@@ -130,8 +134,8 @@ export default function IntroStep({
             </svg>
           </div>
           <p className='text-gray-700 text-lg leading-relaxed'>
-            <strong className='font-bold text-gray-900'>Compare:</strong> Instantly
-            get{" "}
+            <strong className='font-bold text-gray-900'>Compare:</strong>{" "}
+            Instantly get{" "}
             <strong className='font-bold text-gray-900'>
               architecture diagrams and cost comparisons
             </strong>{" "}
@@ -156,8 +160,8 @@ export default function IntroStep({
             </svg>
           </div>
           <p className='text-gray-700 text-lg leading-relaxed'>
-            <strong className='font-bold text-gray-900'>Deploy:</strong> Push one
-            button to{" "}
+            <strong className='font-bold text-gray-900'>Deploy:</strong> Push
+            one button to{" "}
             <strong className='font-bold text-gray-900'>
               deploy the perfect stack
             </strong>{" "}
@@ -169,26 +173,53 @@ export default function IntroStep({
       {/* Continue Button */}
       <div className='flex flex-col items-center gap-4'>
         <button
+          type='button'
           onClick={onContinue}
-          className='inline-flex items-center gap-4 bg-gradient-to-b from-orange-400 to-orange-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-orange-500 hover:to-orange-600 transition-all duration-200 shadow-md hover:shadow-lg'
+          className='inline-flex items-center gap-4 px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg border-0 cursor-pointer'
+          style={{
+            background:
+              "linear-gradient(to bottom, rgb(251, 146, 60), rgb(249, 115, 22))",
+            color: "rgb(255, 255, 255)",
+          }}
+          onMouseEnter={(e) => {
+            const btn = e.currentTarget;
+            btn.style.background =
+              "linear-gradient(to bottom, rgb(249, 115, 22), rgb(234, 88, 12))";
+          }}
+          onMouseLeave={(e) => {
+            const btn = e.currentTarget;
+            btn.style.background =
+              "linear-gradient(to bottom, rgb(251, 146, 60), rgb(249, 115, 22))";
+          }}
         >
           {/* Play Icon */}
-          <div className='w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0'>
+          <div
+            className='w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0'
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+          >
             <svg
               width='16'
               height='16'
               viewBox='0 0 24 24'
               fill='none'
-              stroke='white'
+              stroke='rgb(255, 255, 255)'
               strokeWidth='3'
               strokeLinecap='round'
               strokeLinejoin='round'
-              className='ml-0.5'
+              style={{ marginLeft: "2px" }}
             >
               <polygon points='5 3 19 12 5 21 5 3' />
             </svg>
           </div>
-          GET DEMO VIDEO
+          <span
+            style={{
+              color: "rgb(255, 255, 255)",
+              fontWeight: 600,
+              display: "inline-block",
+            }}
+          >
+            GET DEMO VIDEO
+          </span>
         </button>
 
         {/* Additional Buttons */}
@@ -225,4 +256,3 @@ export default function IntroStep({
     </div>
   );
 }
-

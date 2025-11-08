@@ -154,7 +154,10 @@ export default function StartPage() {
   }
 
   return (
-    <div className='min-h-screen flex flex-col bg-white relative'>
+    <div
+      className='min-h-screen flex flex-col bg-white relative'
+      suppressHydrationWarning
+    >
       {/* Grid Pattern Background */}
       <GridBackground mounted={mounted} />
 
@@ -167,7 +170,10 @@ export default function StartPage() {
       <Header mounted={mounted} />
 
       {/* Main Content */}
-      <main className='flex items-center justify-center container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-5 relative'>
+      <main
+        className='flex items-center justify-center container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-5 relative'
+        suppressHydrationWarning
+      >
         {isIntroStep ? (
           <IntroStep
             isVideoLoading={isVideoLoading}

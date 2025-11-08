@@ -8,6 +8,7 @@ export default function GridBackground({ mounted }: GridBackgroundProps) {
   return (
     <div
       className='absolute top-0 left-0 right-0 pointer-events-none z-0'
+      suppressHydrationWarning
       style={{
         height: "100%",
         backgroundImage: `
@@ -37,4 +38,3 @@ export default function GridBackground({ mounted }: GridBackgroundProps) {
     </div>
   );
 }
-

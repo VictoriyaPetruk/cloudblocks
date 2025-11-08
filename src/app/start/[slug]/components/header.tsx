@@ -10,6 +10,7 @@ export default function Header({ mounted }: HeaderProps) {
       className={`relative z-30 ${
         mounted ? "bg-transparent" : "bg-white/90 backdrop-blur-sm"
       }`}
+      suppressHydrationWarning
     >
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
         <div className='flex items-center justify-center py-5'>
@@ -28,4 +29,3 @@ export default function Header({ mounted }: HeaderProps) {
     </header>
   );
 }
-
