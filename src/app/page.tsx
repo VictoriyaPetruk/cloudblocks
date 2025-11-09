@@ -244,7 +244,7 @@ export default function Home() {
         <div class="nav-links">
           <a href="#features">Features</a>
           <a href="#certs">Cloud Providers</a>
-          <a href="#architect">Solution Architect</a>
+          <a href="#architect">Preview</a>
           <a href="#pricing">Pricing</a>
         </div>
         <a class="btn small secondary" href="#demo">Request a demo</a>
@@ -264,7 +264,7 @@ export default function Home() {
     <div style="padding:1rem 1.2rem; display:grid; gap:.8rem">
       <a href="#features">Features</a>
       <a href="#certs">Cloud Providers</a>
-      <a href="#architect">Solution Architect</a>
+      <a href="#architect">Preview</a>
       <a href="#pricing">Pricing</a>
       <a class="btn" href="#demo">Request a demo</a>
     </div>
@@ -368,14 +368,16 @@ export default function Home() {
     <p class="sub">Describe what you need to build -> get fully diagram for different cloud environments -> observe prices -> deploy into your cloud account.</p>
     <div class="diagram">
       <div style="position: relative; padding-bottom: 49.21875%; height: 0;">
-        <iframe src="https://www.loom.com/embed/43e5400108dd4189b74018675ea439eb?sid=20bc81e4-0844-442c-9cd6-ed3965a53381" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-
-      </iframe>
+        <img 
+          src="/img/preview.png" 
+          alt="Cloud Blocks real environment preview" 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; border-radius: 14px; display: block;"
+        >
       </div>
     </div>
   </section>
   <section  class="section container">
-    <h2>Taking part in IdeasLab Accelerator & UCU Startup School.</h2>
+    <h2>Taking part in IdeasLab Accelerator</h2>
   <article class="feat" style="width: 100%; max-width: 400px; overflow: hidden; border-radius: 20px;">
     <div style="width: 100%;">
       <img 
