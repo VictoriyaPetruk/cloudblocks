@@ -377,7 +377,7 @@ export default function Home() {
     </div>
   </section>
   <section  class="section container">
-    <h2>Taking part in IdeasLab Accelerator & UCU Startup School.</h2>
+    <h2>Taking part in IdeasLab Accelerator</h2>
   <article class="feat" style="width: 100%; max-width: 400px; overflow: hidden; border-radius: 20px;">
     <div style="width: 100%;">
       <img 
