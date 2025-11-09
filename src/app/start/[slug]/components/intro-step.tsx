@@ -36,7 +36,7 @@ export default function IntroStep({
       </h1>
 
       <p className='text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed'>
-        CloudBlocks is your{" "}
+        ...CloudBlocks is your{" "}
         <span className='text-orange-600 font-bold'>AI Cloud Architect</span>.
         We turn your ideas into{" "}
         <span className='text-orange-600 font-bold'>
