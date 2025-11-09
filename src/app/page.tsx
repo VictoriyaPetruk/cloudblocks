@@ -205,6 +205,38 @@ export default function Home() {
   object-fit: contain;
   display: block;
 }
+  .btn.vibrant {
+  display: inline-block;
+  padding: 0.7em 1.6em;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(90deg, #ff4000ff, #f78400ff, #f83131ff);
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  background-size: 200%;
+  box-shadow: 0 0 18px rgba(255, 0, 120, 0.6);
+}
+
+/* Pulse animation */
+.btn.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 12px rgba(255, 106, 0, 0.94),
+                0 0 24px rgba(255, 152, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 106, 0, 0.94),
+                0 0 45px rgba(255, 152, 0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(255, 106, 0, 0.94),
+                0 0 24px rgba(255, 152, 0, 0.4);
+  }
+}
   
   .foot-grid {
     display: grid;
@@ -221,12 +253,10 @@ export default function Home() {
     .nav a.btn { display: none; } /* hide demo btn to save space */
   }
   .logo-img {
-  width: 28px;   /* или подгони под нужный размер */
+  width: 38px;   /* или подгони под нужный размер */
   height: auto;  /* чтобы не искажалось */
   border-radius: 6px; /* если нужен скруглённый угол */
 }
-
-  
   `,
         }}
       />
@@ -247,7 +277,7 @@ export default function Home() {
           <a href="#architect">Preview</a>
           <a href="#pricing">Pricing</a>
         </div>
-        <a class="btn small secondary" href="#demo">Request a demo</a>
+        <a class="btn vibrant pulse" href="#demo">Request a demo</a>
         <button class="hamb" aria-label="Open menu" onclick="document.querySelector('.mobile').showModal()">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
@@ -285,10 +315,10 @@ export default function Home() {
           <a class="btn secondary" href="#features">Explore features</a>
         </div>
       </div>
-      <div class="hero-ill" aria-hidden="true" style="aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; width: 100%; max-width: 900px; margin-inline: auto;">
+      <div aria-hidden="true" style="aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; width: 100%; max-width: 900px; margin-inline: auto;">
         <img 
           alt="Cloud Blocks real environment preview" 
-          src="/img/chat2.png" 
+          src="/img/chat3.png" 
           style="width: 100%; height: 100%; object-fit: contain; display: block;"
         />
       </div>
