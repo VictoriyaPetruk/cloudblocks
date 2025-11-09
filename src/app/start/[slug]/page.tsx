@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import emailjs from "@emailjs/browser";
 
 // Types and constants
-import { questions, validSlugs } from "./constants";
+import { questions, validSlugs, questionsForm, whitelistForm } from "./constants";
 import { calculateProgress } from "./utils/progress-utils";
 import { formatAnswersForEmail } from "./utils/email-utils";
 
@@ -79,7 +79,42 @@ export default function StartPage() {
     setIsWaitlistSubmitting(true);
 
     try {
-      // Send waitlist email using the same template as questionnaire
+        // Build URL-encoded form data for Google Form submission
+        const params = new URLSearchParams();
+
+        // Append email field
+        if (waitlistEmail) {
+            params.append(whitelistForm.formEmailKey, waitlistEmail);
+        }
+
+        // Append campaign field from current page slug (base64-decoded)
+        if (slug) {
+            let campaignValue = slug;
+            try {
+                const decoded = atob(slug);
+                if (decoded) {
+                    campaignValue = decoded;
+                }
+            } catch {
+                // if decoding fails, use original slug
+            }
+            params.append(whitelistForm.campainKey, campaignValue);
+        }
+
+        // Submit to Google Form using GET with query params
+        try {
+            const query = params.toString();
+            const url = query ? `${whitelistForm.url}?${query}` : whitelistForm.url;
+            await fetch(url, {
+                method: "GET",
+                mode: "no-cors",
+            });
+        } catch (formError) {
+            // Even if the form request fails locally, proceed with email sending
+            console.warn("Whitelist form submission warning:", formError);
+        }
+
+        // Send waitlist email using the same template as questionnaire
       await emailjs.send("service_6pgksdi", "template_ld3y9nd", {
         user_email: waitlistEmail,
         answers: "Joined waitlist from Web Summit page",
@@ -109,11 +144,80 @@ export default function StartPage() {
         questions
       );
 
+        // Build URL-encoded form data for Google Form submission
+        const params = new URLSearchParams();
+
+        // Helper to append a single answer value for a question
+        const appendAnswer = (qKey: string, option: string, hasOtherInput?: boolean, otherText?: string) => {
+          if (option === "Other" && hasOtherInput) {
+            // Always send the special other option marker for the main key
+            params.append(qKey, questionsForm.formOtherOptionValue);
+
+            // Send companion response with user's text or the literal "other"
+            const text = (otherText ?? "").trim();
+            const responseKey = `${qKey}${questionsForm.formOtherOptionResponseKeySuffix}`;
+            params.append(responseKey, text.length > 0 ? text : "other");
+          } else {
+            params.append(qKey, option);
+          }
+        };
+
+        // Append each answered question using its formKey
+        questions.forEach((q) => {
+          const ans = answers[q.id];
+          if (!ans) return;
+
+          if (Array.isArray(ans)) {
+            // Multi-select: append each selected value under the same key
+            ans.forEach((opt) => {
+              const otherText = otherInputs[q.id];
+              appendAnswer(q.formKey, opt, q.hasOtherInput, otherText);
+            });
+          } else {
+            // Single select
+            const otherText = otherInputs[q.id];
+            appendAnswer(q.formKey, ans as string, q.hasOtherInput, otherText);
+          }
+        });
+
+        // Append email field
+        if (email) {
+          params.append(questionsForm.formEmailKey, email);
+        }
+
+        // Append campaign field from current page slug (base64-decoded)
+        if (slug) {
+          let campaignValue = slug;
+          try {
+            const decoded = atob(slug);
+            if (decoded) {
+              campaignValue = decoded;
+            }
+          } catch {
+            // if decoding fails, use original slug
+          }
+          params.append(questionsForm.campainKey, campaignValue);
+        }
+
+        // Submit to Google Form using GET with query params
+        try {
+          const query = params.toString();
+          const url = query ? `${questionsForm.url}?${query}` : questionsForm.url;
+          await fetch(url, {
+            method: "GET",
+            mode: "no-cors",
+          });
+        } catch (formError) {
+          // Even if the form request fails locally, proceed with email sending
+          console.warn("Form submission warning:", formError);
+        }
+
+
       // Send email with answers
-      await emailjs.send("service_6pgksdi", "template_ld3y9nd", {
-        user_email: email,
-        answers: answersText,
-      });
+      // await emailjs.send("service_6pgksdi", "template_ld3y9nd", {
+      //   user_email: email,
+      //   answers: answersText,
+      // });
 
       // Send confirmation email
       await emailjs.send("service_6pgksdi", "template_l21ckqw", {
