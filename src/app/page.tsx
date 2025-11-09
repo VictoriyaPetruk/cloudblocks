@@ -476,8 +476,6 @@ export default function Home() {
           <img src="/img/logo.png" alt="Cloud Blocks logo" class="logo-img">
           <span>Cloud Blocks</span>
         </a>
-        <p style="color:#6b7280; max-width:46ch; margin:.6rem 0 0">Now taking part in <strong>IdeasLab UCU</strong> Accelerator.</p>
-      </div>
       <div class="foot">
         
       </div>
