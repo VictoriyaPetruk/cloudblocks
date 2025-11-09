@@ -243,7 +243,7 @@ export default function Home() {
       <nav class="nav-menu">
         <div class="nav-links">
           <a href="#features">Features</a>
-          <a href="#certs">Certifications</a>
+          <a href="#certs">Cloud Providers</a>
           <a href="#architect">Solution Architect</a>
           <a href="#pricing">Pricing</a>
         </div>
@@ -263,7 +263,7 @@ export default function Home() {
     </div>
     <div style="padding:1rem 1.2rem; display:grid; gap:.8rem">
       <a href="#features">Features</a>
-      <a href="#certs">Certifications</a>
+      <a href="#certs">Cloud Providers</a>
       <a href="#architect">Solution Architect</a>
       <a href="#pricing">Pricing</a>
       <a class="btn" href="#demo">Request a demo</a>

@@ -72,7 +72,7 @@ export default function Home() {
                   href='#certs'
                   className='text-gray-700 hover:text-gray-900 font-medium'
                 >
-                  Certifications
+                  Cloud Providers
                 </Link>
                 <Link
                   href='#architect'
@@ -140,7 +140,7 @@ export default function Home() {
               className='block text-gray-700 hover:text-gray-900'
               onClick={() => setShowMobileMenu(false)}
             >
-              Certifications
+              Cloud Providers
             </Link>
             <Link
               href='#architect'
