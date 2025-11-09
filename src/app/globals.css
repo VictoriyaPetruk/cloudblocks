@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Ensure demo video button always shows correctly */
+button[class*="inline-flex"] {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent dark mode from affecting button text */
+@media (prefers-color-scheme: dark) {
+  button[style*="background"] span,
+  button[style*="background"] {
+    color: rgb(255, 255, 255) !important;
+  }
+}
