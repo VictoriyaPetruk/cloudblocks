@@ -257,6 +257,20 @@ export default function Home() {
   height: auto;  /* чтобы не искажалось */
   border-radius: 6px; /* если нужен скруглённый угол */
 }
+
+@keyframes swing {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); } /* перевернули направление */
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.swing {
+  display: inline-block;
+  transform-origin: bottom center; /* теперь вращается от нижнего края */
+  animation: swing 3s ease-in-out infinite;
+}
   `,
         }}
       />
@@ -316,11 +330,12 @@ export default function Home() {
         </div>
       </div>
       <div aria-hidden="true" style="aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; width: 100%; max-width: 900px; margin-inline: auto;">
-        <img 
-          alt="Cloud Blocks real environment preview" 
-          src="/img/chat3.png" 
-          style="width: 100%; height: 100%; object-fit: contain; display: block;"
-        />
+       <img 
+        src="/img/chat3.png" 
+        alt="Cloud Blocks real environment preview" 
+        class="swing"
+        style="width:100%; height:100%; object-fit:contain; display:block;"
+      />
       </div>
     </div>
 
