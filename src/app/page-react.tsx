@@ -212,7 +212,7 @@ export default function Home() {
             <div className='relative'>
               <div className='aspect-[4/3] rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 p-8 shadow-xl'>
                 <Image
-                  src='/img/chat3.png'
+                  src='/img/chat2.png'
                   alt='Cloud Blocks real environment preview'
                   width={600}
                   height={450}

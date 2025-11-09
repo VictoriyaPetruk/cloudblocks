@@ -1,4 +1,4 @@
-import { FormConfig, Question } from "./types";
+import { FormConfig, Question } from "./start/[slug]/types";
 
 export const questions: Question[] = [
   {
