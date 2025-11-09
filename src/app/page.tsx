@@ -479,29 +479,13 @@ export default function Home() {
         <p style="color:#6b7280; max-width:46ch; margin:.6rem 0 0">Now taking part in <strong>IdeasLab UCU</strong> Accelerator.</p>
       </div>
       <div class="foot">
-        <h5>Links</h5>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#certs">Clouds</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-        </ul>
+        
       </div>
       <div class="foot">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="#">Terms</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Cookies</a></li>
-        </ul>
+        
       </div>
       <div class="foot">
-        <h5>Newsletter</h5>
-        <form onsubmit="event.preventDefault(); alert('Thanks!'); this.reset();">
-          <input class="input" type="email" placeholder="Enter your email" required />
-          <div style="height:.6rem"></div>
-          <button class="btn small" type="submit">Subscribe</button>
-        </form>
+        
       </div>
     </div>
     <div class="container copyright">© <span id="y"></span> blc. All rights reserved.</div>
