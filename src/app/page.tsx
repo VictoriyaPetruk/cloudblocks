@@ -291,7 +291,7 @@ export default function Home() {
           <a href="#architect">Preview</a>
           <a href="#pricing">Pricing</a>
         </div>
-        <a class="btn vibrant pulse" href="https://cloudblocks.tech/start/cG93ZXI=">Request a demo</a>
+        <a class="btn vibrant pulse" href="https://cloudblocks.tech/start/demo">Request a demo</a>
         <button class="hamb" aria-label="Open menu" onclick="document.querySelector('.mobile').showModal()">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
