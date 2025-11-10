@@ -482,7 +482,7 @@ export default function Home() {
         </div>
         <div class="price">$0</div>
         <p style="margin:.2rem 0 1rem; color:#6b7280">Join now and help us shape the product.</p>
-        <a class="btn" href="#demo">Get in →</a>
+        <a class="btn" href="/start/demo">Get demo →</a>
       </div>
     </div>
   </section>
