@@ -53,7 +53,8 @@ export default function VideoPage() {
             }}
           >
             <iframe
-              src='https://www.loom.com/embed/43e5400108dd4189b74018675ea439eb'
+              src='https://www.loom.com/embed/72de51a4d75540ff93aa20e7782b73cf'
+              frameBorder='0'
               allowFullScreen
               style={{
                 position: "absolute",
@@ -68,7 +69,6 @@ export default function VideoPage() {
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
             />
           </div>
-
           {/* Back Button */}
           <div className='flex justify-center items-center pt-4'>
             <Link
