@@ -1,6 +1,31 @@
+"use client";
+
 import Script from "next/script";
+import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Intercept clicks on demo links and use Next.js router
+    const handleDemoLinkClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a[href="/start/demo"]') as HTMLAnchorElement;
+
+      if (link) {
+        e.preventDefault();
+        router.push("/start/demo");
+      }
+    };
+
+    document.addEventListener("click", handleDemoLinkClick);
+
+    return () => {
+      document.removeEventListener("click", handleDemoLinkClick);
+    };
+  }, [router]);
   return (
     <>
       <style
@@ -40,8 +65,9 @@ export default function Home() {
     .btn:hover{transform:translateY(-1px); background:var(--primary-dark); box-shadow:0 12px 26px rgba(249,115,22,.32)}
     .btn.secondary{background:#fff; color:var(--text); border:1px solid var(--border); box-shadow:var(--shadow)}
     .btn.small{padding:.6rem .85rem; border-radius:12px; font-size:.9rem}
-    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(180%) blur(10px); background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.72)); border-bottom:1px solid rgba(15,23,42,.06)}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:.9rem 0}
+    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(180%) blur(10px); background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.72)); border-bottom:1px solid rgba(15,23,42,.06); width:100%; margin:0; padding:0}
+    header .container{width:min(var(--container), 92%); margin-inline:auto; padding-inline:clamp(1rem, 3vw, 2rem)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:.9rem 0; width:100%}
     .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:-.02em}
     .brand .logo{width:26px; height:26px; display:grid; grid-template-columns:repeat(2,1fr); gap:3px}
     .brand .logo span{background:var(--text); border-radius:4px}
@@ -49,6 +75,7 @@ export default function Home() {
     .nav-menu{display:flex; gap:1.2rem; align-items:center}
     .nav-links{display:flex; gap:1rem}
     .hamb{display:none}
+    dialog.mobile{max-width:100%; width:100%}
 
     /* Hero */
     .hero{position:relative; overflow:hidden}
@@ -135,18 +162,23 @@ export default function Home() {
       .badges{grid-template-columns:repeat(2, minmax(0,1fr))}
       .foot-grid{grid-template-columns:1fr 1fr}
     }
-    @media (max-width: 640px){
-      .nav-links{display:none}
-      .hamb{display:inline-flex; background:#fff; border:1px solid var(--border); border-radius:12px; padding:.55rem}
-      .features-grid{grid-template-columns:1fr}
-      .badges{grid-template-columns:1fr}
-      .foot-grid{grid-template-columns:1fr}
-    }
     .container {
     width: min(var(--container), 92%);
     margin-inline: auto;
     padding-inline: clamp(1rem, 3vw, 2rem); /* adaptive padding */
   }
+    @media (max-width: 640px){
+      header{width:100% !important; margin:0 !important; padding:0 !important}
+      header .container.nav{width:100% !important; max-width:100% !important; padding-inline:1rem !important; margin-inline:0 !important}
+      header .container{width:100% !important; max-width:100% !important; padding-inline:1rem !important; margin-inline:0 !important}
+      .nav{width:100%}
+      .nav-links{display:none}
+      .hamb{display:inline-flex; background:#fff; border:1px solid var(--border); border-radius:12px; padding:.55rem}
+      dialog.mobile{max-width:100% !important; width:100% !important; border-radius:0 !important}
+      .features-grid{grid-template-columns:1fr}
+      .badges{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr}
+    }
   
   h1 {
     font-size: clamp(1.8rem, 4vw + 1rem, 3.6rem);
@@ -291,7 +323,7 @@ export default function Home() {
           <a href="#architect">Preview</a>
           <a href="#pricing">Pricing</a>
         </div>
-        <a class="btn vibrant pulse" href="https://cloudblocks.tech/start/demo">Request a demo</a>
+        <a class="btn vibrant pulse" href="/start/demo">Request a demo</a>
         <button class="hamb" aria-label="Open menu" onclick="document.querySelector('.mobile').showModal()">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
@@ -300,7 +332,7 @@ export default function Home() {
   </header>
 
   <!-- Mobile menu -->
-  <dialog class="mobile" style="border:none;border-radius:16px;padding:0;max-width:92%;width:520px;">
+  <dialog class="mobile" style="border:none;border-radius:16px;padding:0;max-width:100%;width:100%;">
     <div style="padding:1rem 1.2rem; border-bottom:1px solid #eef2f7; display:flex; align-items:center; justify-content:space-between">
       <strong>Menu</strong>
       <button class="btn small secondary" onclick="this.closest('dialog').close()">Close</button>
@@ -310,7 +342,7 @@ export default function Home() {
       <a href="#certs">Cloud Providers</a>
       <a href="#architect">Preview</a>
       <a href="#pricing">Pricing</a>
-      <a class="btn" href="#demo">Request a demo</a>
+      <a class="btn" href="/start/demo">Request a demo</a>
     </div>
   </dialog>
 
@@ -322,7 +354,7 @@ export default function Home() {
         <h1>Cloud Blocks</h1>
         <p class="lead">Create real cloud environments instantly. Use Cloud Architect AI Agent to spin up solutions, experiment safely, and architect like a pro.</p>
         <div class="hero-cta">
-          <a class="btn" href="#demo">
+          <a class="btn" href="/start/demo">
             <span>Become early adopter</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -491,6 +523,29 @@ export default function Home() {
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Close mobile menu when clicking on backdrop
+    function setupMobileMenuClose() {
+      const mobileMenu = document.querySelector('dialog.mobile');
+      if (mobileMenu) {
+        mobileMenu.addEventListener('click', function(e) {
+          // If click target is the dialog itself (backdrop), close it
+          if (e.target === mobileMenu) {
+            mobileMenu.close();
+          }
+        });
+      }
+    }
+    
+    // Set up on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupMobileMenuClose);
+    } else {
+      setupMobileMenuClose();
+    }
+    
+    // Also try after a delay to ensure dialog is in DOM
+    setTimeout(setupMobileMenuClose, 100);
   </script>
         `,
         }}

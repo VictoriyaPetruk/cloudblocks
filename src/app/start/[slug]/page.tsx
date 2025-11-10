@@ -296,6 +296,7 @@ export default function StartPage() {
             videoRef={videoRef}
             onContinue={handleContinue}
             onWaitlistClick={() => setShowWaitlistModal(true)}
+            slug={slug}
           />
         ) : !isEmailStep ? (
           currentQuestion && (

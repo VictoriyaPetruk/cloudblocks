@@ -8,6 +8,7 @@ interface IntroStepProps {
   videoRef: RefObject<HTMLVideoElement | null>;
   onContinue: () => void;
   onWaitlistClick: () => void;
+  slug?: string;
 }
 
 export default function IntroStep({
@@ -16,6 +17,7 @@ export default function IntroStep({
   videoRef,
   onContinue,
   onWaitlistClick,
+  slug,
 }: IntroStepProps) {
   return (
     <div
@@ -31,7 +33,7 @@ export default function IntroStep({
               "linear-gradient(to bottom, rgb(251, 146, 60), rgb(249, 115, 22))",
           }}
         >
-          Web Summit!
+          {slug === "demo" ? "Demo page" : "Web Summit!"}
         </span>
       </h1>
 
