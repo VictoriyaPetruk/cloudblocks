@@ -7,6 +7,7 @@ import Header from "../start/[slug]/components/header";
 
 export default function VideoPage() {
   const [mounted, setMounted] = useState(false);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -39,21 +40,44 @@ export default function VideoPage() {
 
           {/* Loom Video Embed */}
           <div
-            className='mb-10 w-full mx-auto'
             style={{
-              paddingBottom: "56.25%",
               position: "relative",
+              paddingBottom: "39.583333333333336%",
               height: 0,
-              overflow: "hidden",
-              borderRadius: "14px",
-              boxShadow:
-                "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-              backgroundColor: "#000",
-              maxWidth: "100%",
             }}
+            className='mb-10'
           >
+            {/* Loading State */}
+            {isVideoLoading && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "#f3f4f6",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 10,
+                  borderRadius: "14px",
+                }}
+              >
+                <div className='flex flex-col items-center gap-4'>
+                  <div className='relative w-16 h-16'>
+                    <div className='absolute inset-0 border-4 border-orange-200 rounded-full'></div>
+                    <div className='absolute inset-0 border-4 border-orange-500 rounded-full border-t-transparent animate-spin'></div>
+                  </div>
+                  <p className='text-gray-600 text-base font-medium'>
+                    Loading video...
+                  </p>
+                </div>
+              </div>
+            )}
+
             <iframe
-              src='https://www.loom.com/embed/72de51a4d75540ff93aa20e7782b73cf'
+              src='https://www.loom.com/embed/6bb4e08db7df4747a00855a600181c25'
               frameBorder='0'
               allowFullScreen
               style={{
@@ -62,11 +86,11 @@ export default function VideoPage() {
                 left: 0,
                 width: "100%",
                 height: "100%",
-                border: "none",
-                borderRadius: "14px",
+                opacity: isVideoLoading ? 0 : 1,
+                transition: "opacity 0.3s ease-in-out",
               }}
               title='CloudBlocks Demo Video'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              onLoad={() => setIsVideoLoading(false)}
             />
           </div>
           {/* Back Button */}
