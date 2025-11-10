@@ -23,8 +23,8 @@ export default function EmailStep({
         Almost done! 🎉
       </h1>
       <p className='text-lg sm:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto text-center'>
-        Leave your email to join the waitlist and receive personalized cloud
-        solution recommendations.
+        Leave your email and we will notify you when product will be ready to
+        use.
       </p>
 
       <form onSubmit={onSubmit} className='space-y-6 max-w-2xl w-full mx-auto'>
@@ -69,7 +69,7 @@ export default function EmailStep({
               "Submitting..."
             ) : (
               <>
-                Submit
+                Go to demo
                 <svg
                   width='18'
                   height='18'
@@ -91,4 +91,3 @@ export default function EmailStep({
     </div>
   );
 }
-

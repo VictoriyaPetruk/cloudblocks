@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import emailjs from "@emailjs/browser";
 
 // Types and constants
@@ -31,6 +31,7 @@ import WaitlistModal from "./components/waitlist-modal";
 
 export default function StartPage() {
   const params = useParams();
+  const router = useRouter();
   const rawSlug = params?.slug as string;
   // Decode URL-encoded slug (handles %3D -> =, etc.)
   const slug = rawSlug ? decodeURIComponent(rawSlug) : "";
@@ -233,7 +234,8 @@ export default function StartPage() {
         user_email: email,
       });
 
-      setShowThankYou(true);
+      // Navigate to video page after successful submission
+      router.push("/video");
     } catch (error) {
       alert("Oops, something went wrong. Try again!");
       console.error(error);

@@ -27,9 +27,16 @@ export default function QuestionStep({
 }: QuestionStepProps) {
   return (
     <div className='text-center w-full max-w-4xl mx-auto relative z-10'>
-      <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-8 leading-tight'>
+      <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-4 leading-tight'>
         {question.icon} {question.question}
       </h1>
+
+      {/* Show subtitle only on first step */}
+      {currentStep === 0 && (
+        <p className='text-base sm:text-lg text-gray-600 mb-8 leading-relaxed'>
+          Answer 3 questions so we can get to know you better🙂
+        </p>
+      )}
 
       <div className='space-y-3 max-w-xl mx-auto mb-8'>
         {question.options.map((option, index) => {
