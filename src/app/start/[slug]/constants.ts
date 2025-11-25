@@ -57,6 +57,7 @@ export const validSlugs = [
   "cnVsZXM=", // rules
   "ZnJlZWRvbQ==", // freedom
   "demo",
+  "solution",
 ];
 
 export const questionsForm: FormConfig = {

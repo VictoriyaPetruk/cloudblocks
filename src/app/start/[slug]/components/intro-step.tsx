@@ -19,23 +19,27 @@ export default function IntroStep({
   onWaitlistClick,
   slug,
 }: IntroStepProps) {
+  const isVariantForPost = slug === "solution";
+
   return (
     <div
       className='text-center w-full max-w-4xl mx-auto relative z-10'
       suppressHydrationWarning
     >
-      <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight'>
-        Great to see you at{" "}
-        <span
-          className='inline-block text-white px-4 py-2.5 rounded-lg text-4xl sm:text-5xl lg:text-6xl font-bold align-middle leading-tight'
-          style={{
-            background:
-              "linear-gradient(to bottom, rgb(251, 146, 60), rgb(249, 115, 22))",
-          }}
-        >
-          {slug === "demo" ? "Demo page" : "Web Summit!"}
-        </span>
-      </h1>
+      {!isVariantForPost && (
+        <h1 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight'>
+          Great to see you at{" "}
+          <span
+            className='inline-block text-white px-4 py-2.5 rounded-lg text-4xl sm:text-5xl lg:text-6xl font-bold align-middle leading-tight'
+            style={{
+              background:
+                "linear-gradient(to bottom, rgb(251, 146, 60), rgb(249, 115, 22))",
+            }}
+          >
+            {slug === "demo" ? "Demo page" : "Web Summit!"}
+          </span>
+        </h1>
+      )}
 
       <p className='text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed'>
         CloudBlocks is your{" "}
@@ -201,24 +205,26 @@ export default function IntroStep({
           }}
         >
           {/* Play Icon */}
-          <div
-            className='w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0'
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-          >
-            <svg
-              width='16'
-              height='16'
-              viewBox='0 0 24 24'
-              fill='none'
-              stroke='rgb(255, 255, 255)'
-              strokeWidth='3'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              style={{ marginLeft: "2px" }}
+          {!isVariantForPost && (
+            <div
+              className='w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0'
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
             >
-              <polygon points='5 3 19 12 5 21 5 3' />
-            </svg>
-          </div>
+              <svg
+                width='16'
+                height='16'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='rgb(255, 255, 255)'
+                strokeWidth='3'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                style={{ marginLeft: "2px" }}
+              >
+                <polygon points='5 3 19 12 5 21 5 3' />
+              </svg>
+            </div>
+          )}
           <span
             style={{
               color: "rgb(255, 255, 255)",
@@ -226,18 +232,20 @@ export default function IntroStep({
               display: "inline-block",
             }}
           >
-            GET DEMO VIDEO
+            GET YOUR CLOUD ARCHITECTURE
           </span>
         </button>
 
         {/* Additional Buttons */}
         <div className='flex flex-col sm:flex-row gap-3 items-center'>
-          <button
-            onClick={onWaitlistClick}
-            className='inline-flex items-center gap-2 bg-white text-gray-900 border-2 border-gray-300 px-6 py-3 rounded-full text-base font-semibold hover:border-orange-500 hover:text-orange-600 transition-all duration-200 shadow-sm hover:shadow-md'
-          >
-            Join the waitlist
-          </button>
+          {!isVariantForPost && (
+            <button
+              onClick={onWaitlistClick}
+              className='inline-flex items-center gap-2 bg-white text-gray-900 border-2 border-gray-300 px-6 py-3 rounded-full text-base font-semibold hover:border-orange-500 hover:text-orange-600 transition-all duration-200 shadow-sm hover:shadow-md hover:cursor-pointer'
+            >
+              Join the waitlist
+            </button>
+          )}
 
           <a
             href='https://www.instagram.com/cloud.blocks'

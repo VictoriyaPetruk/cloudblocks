@@ -8,6 +8,7 @@ interface EmailStepProps {
   isSubmitting: boolean;
   onBack: () => void;
   onSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
+  slug?: string;
 }
 
 export default function EmailStep({
@@ -16,15 +17,19 @@ export default function EmailStep({
   isSubmitting,
   onBack,
   onSubmit,
+  slug,
 }: EmailStepProps) {
+  const isSpecialVariant = slug === "solution";
+
   return (
     <div className='text-center w-full max-w-4xl mx-auto relative z-10'>
       <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6 leading-tight text-center'>
         Almost done! 🎉
       </h1>
       <p className='text-lg sm:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto text-center'>
-        Leave your email and we will notify you when product will be ready to
-        use.
+        {isSpecialVariant
+          ? "Leave your email and we will create a cloud solution for you"
+          : "Leave your email and we will notify you when product will be ready to use."}
       </p>
 
       <form onSubmit={onSubmit} className='space-y-6 max-w-2xl w-full mx-auto'>
@@ -69,7 +74,7 @@ export default function EmailStep({
               "Submitting..."
             ) : (
               <>
-                Go to demo
+                {isSpecialVariant ? "Get architecture" : "Go to demo"}
                 <svg
                   width='18'
                   height='18'

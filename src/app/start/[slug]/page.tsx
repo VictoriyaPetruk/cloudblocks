@@ -234,8 +234,13 @@ export default function StartPage() {
         user_email: email,
       });
 
-      // Navigate to video page after successful submission
-      router.push("/video");
+      // For solution variant, show thank you page instead of redirecting
+      if (slug === "solution") {
+        setShowThankYou(true);
+      } else {
+        // Navigate to video page after successful submission
+        router.push("/video");
+      }
     } catch (error) {
       alert("Oops, something went wrong. Try again!");
       console.error(error);
@@ -321,6 +326,7 @@ export default function StartPage() {
             isSubmitting={isSubmitting}
             onBack={() => handleBack(true)}
             onSubmit={handleEmailSubmit}
+            slug={slug}
           />
         )}
       </main>
