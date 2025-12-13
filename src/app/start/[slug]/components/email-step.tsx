@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent } from "react";
+import { specialVariantSlugs } from "../constants";
 
 interface EmailStepProps {
   email: string;
@@ -19,7 +20,7 @@ export default function EmailStep({
   onSubmit,
   slug,
 }: EmailStepProps) {
-  const isSpecialVariant = slug === "solution";
+  const isSpecialVariant = slug ? specialVariantSlugs.includes(slug) : false;
 
   return (
     <div className='text-center w-full max-w-4xl mx-auto relative z-10'>

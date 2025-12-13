@@ -1,6 +1,7 @@
 "use client";
 
 import { RefObject } from "react";
+import { specialVariantSlugs } from "../constants";
 
 interface IntroStepProps {
   isVideoLoading: boolean;
@@ -19,7 +20,7 @@ export default function IntroStep({
   onWaitlistClick,
   slug,
 }: IntroStepProps) {
-  const isVariantForPost = slug === "solution";
+  const isVariantForPost = slug ? specialVariantSlugs.includes(slug) : false;
 
   return (
     <div

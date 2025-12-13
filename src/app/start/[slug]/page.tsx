@@ -10,6 +10,7 @@ import {
   validSlugs,
   questionsForm,
   whitelistForm,
+  specialVariantSlugs,
 } from "./constants";
 import { calculateProgress } from "./utils/progress-utils";
 import { formatAnswersForEmail } from "./utils/email-utils";
@@ -234,8 +235,8 @@ export default function StartPage() {
         user_email: email,
       });
 
-      // For solution variant, show thank you page instead of redirecting
-      if (slug === "solution") {
+      // For special variant slugs, show thank you page instead of redirecting
+      if (slug && specialVariantSlugs.includes(slug)) {
         setShowThankYou(true);
       } else {
         // Navigate to video page after successful submission

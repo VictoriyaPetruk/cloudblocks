@@ -60,6 +60,9 @@ export const validSlugs = [
   "solution",
 ];
 
+// Special variant slugs that have custom behavior (hide elements, show thank you page, etc.)
+export const specialVariantSlugs = ["solution", "cG93ZXI="];
+
 export const questionsForm: FormConfig = {
   url: "https://docs.google.com/forms/d/e/1FAIpQLSe-AwntW1IBkd4J4bcaW3AWZHnPbGj3VpefQ-MF2OxsCSDDGA/formResponse",
   formEmailKey: "entry.1054867110",
