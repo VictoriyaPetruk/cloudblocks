@@ -26,6 +26,91 @@ export default function Home() {
       document.removeEventListener("click", handleDemoLinkClick);
     };
   }, [router]);
+
+  useEffect(() => {
+    // Animated badge image change - continuous loop
+    // Only run on client side after hydration
+    if (typeof window === 'undefined') return;
+
+    const badge = document.getElementById('animated-badge');
+    if (!badge) return;
+    
+    const img = badge.querySelector('img') as HTMLImageElement;
+    const badgeText = document.getElementById('badge-text') as HTMLElement;
+    const badgeExtraText = document.getElementById('badge-extra-text') as HTMLElement;
+    if (!img || !badgeText || !badgeExtraText) return;
+    
+    let currentState = 0; // 0 = 1991, 1 = IdeasLab, 2 = KNEU
+    let timeoutIds: NodeJS.Timeout[] = [];
+    
+    function switchImage() {
+      // Fade out
+      badge!.classList.add('fade-out');
+      
+      const fadeTimeout = setTimeout(function() {
+        // Switch image and text based on current state
+        if (currentState === 0) {
+          // Switch to IdeasLab
+          badgeText!.textContent = 'Backed By:';
+          img!.src = '/img/IdeasLab.png';
+          img!.alt = 'IdeasLab';
+          badgeExtraText!.textContent = 'IdeasLab accelerator';
+          badgeExtraText!.style.display = 'inline';
+          currentState = 1;
+        } else if (currentState === 1) {
+          // Switch to KNEU
+          badgeText!.textContent = 'Backed By:';
+          img!.src = '/img/KNEU.png';
+          img!.alt = 'KNEU Startup School';
+          badgeExtraText!.textContent = 'KNEU Startup School';
+          badgeExtraText!.style.display = 'inline';
+          currentState = 2;
+        } 
+        else if (currentState === 2) {
+          badgeText!.textContent = 'Highlighted By:';
+          img!.src = '/img/uatech.png';
+          img!.alt = 'UA Tech';
+          badgeExtraText!.textContent = '';
+          badgeExtraText!.style.display = 'inline';
+          currentState = 3;
+        }
+        else if (currentState === 3) {
+          badgeText!.textContent = 'Participants:';
+          img!.src = '/img/websummit.png';
+          img!.alt = 'UA Tech';
+          badgeExtraText!.textContent = '2025';
+          badgeExtraText!.style.display = 'inline';
+          currentState = 4;
+        }
+        else {
+          badgeText!.textContent = 'Currently in:';
+          img!.src = '/img/1991.png';
+          img!.alt = '1991';
+          badgeExtraText!.style.display = 'none';
+          currentState = 0;
+        }
+        
+        // Fade in
+        badge!.classList.remove('fade-out');
+        badge!.classList.add('fade-in');
+        
+        // Schedule next switch after 3 seconds
+        const nextTimeout = setTimeout(switchImage, 3000);
+        timeoutIds.push(nextTimeout);
+      }, 500); // Wait for fade-out to complete
+      
+      timeoutIds.push(fadeTimeout);
+    }
+    
+    // Start the loop after initial 3 seconds
+    const initialTimeout = setTimeout(switchImage, 3000);
+    timeoutIds.push(initialTimeout);
+
+    return () => {
+      // Clean up all timeouts
+      timeoutIds.forEach(id => clearTimeout(id));
+    };
+  }, []);
   return (
     <>
       <style
@@ -82,6 +167,10 @@ export default function Home() {
     .hero .wrap{display:grid; grid-template-columns: 1.05fr .95fr; gap:2rem; align-items:center; padding:3.4rem 0 2.6rem}
     .eyebrow{color:var(--muted); font-weight:600; letter-spacing:.06em; text-transform:uppercase; font-size:.78rem}
     h1{font-size: clamp(2rem, 3.4vw + 1rem, 3.6rem); line-height:1.05; letter-spacing:-.03em; margin:.5rem 0 1.1rem}
+    .animated-badge{display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; transition:opacity 0.5s ease-in-out; font-size:clamp(14px, 2vw, 22px); color:var(--muted); font-weight:500}
+    .animated-badge img{height:auto; max-height:50px; display:block}
+    .animated-badge.fade-out{opacity:0}
+    .animated-badge.fade-in{opacity:1}
     h2{font-weight: 700;}
     .lead{font-size:1.05rem; color:#4b5563; max-width:44ch}
     .hero-cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.4rem}
@@ -126,6 +215,18 @@ export default function Home() {
       #fff; box-shadow:var(--shadow)}
     .diagram img{max-width:100%; border-radius:14px; display:block}
 
+    /* Features Dashboard Section */
+    .features-dashboard{display:grid; grid-template-columns: 1fr 1.2fr; gap:3rem; align-items:start; margin-top:2rem}
+    .features-list{display:flex; flex-direction:column; gap:1.5rem}
+    .feature-item{position:relative; padding-left:1.5rem; border-left:3px solid transparent; transition:all 0.3s ease}
+    .feature-item.active{border-left-color:var(--accent)}
+    .feature-item h3{margin:0 0 .5rem; font-size:1.25rem; font-weight:700; color:var(--text)}
+    .feature-item p{margin:0 0 1rem; color:var(--muted); font-size:.95rem; line-height:1.6}
+    .feature-item .read-more{color:var(--accent); text-decoration:none; font-weight:600; font-size:.9rem; display:inline-flex; align-items:center; gap:.3rem; transition:color 0.2s}
+    .feature-item .read-more:hover{color:var(--primary-dark)}
+    .dashboard-preview{background:#fff; border:1px solid var(--border); border-radius:18px; padding:1.5rem; box-shadow:var(--shadow); position:sticky; top:100px}
+    .dashboard-preview img{width:100%; height:auto; border-radius:12px; display:block}
+
     /* Pricing */
     .pricing-wrap{display:grid; place-items:center}
     .card{background:#fff; border:1px solid var(--border); border-radius:18px; box-shadow:var(--shadow)}
@@ -145,6 +246,25 @@ export default function Home() {
     .field{display:flex; gap:.6rem; flex-wrap:wrap}
     .input{flex:1 1 280px; padding:.9rem 1rem; border-radius:12px; border:none; background: #f3f4f6; color: #111827; height: 48px; max-width: 500px; }
     #subscribe-form{display: flex; justify-content: center; align-items: center;}
+   .architect-section {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #ff5b2f,#ff7a45);
+  color: #fff;
+}
+  .architect-section p{color:#fff}
+
+    /* CTA Section */
+    .cta-section{position:relative; overflow:hidden; padding:4rem 0; background:
+      repeating-linear-gradient(0deg,rgb(26, 26, 26) 0px, #1a1a1a 1px, transparent 1px, transparent 20px),
+      repeating-linear-gradient(90deg, #1a1a1a 0px, #1a1a1a 1px, transparent 1px, transparent 20px),
+rgb(255, 255, 255);
+      text-align:center; color:#1a1a1a}
+    .cta-section .inner{position:relative; z-index:1}
+    .cta-section h2{font-size: clamp(2rem, 4vw + 1rem, 3.5rem); margin:0 0 2rem; font-weight:700; color:#1a1a1a}
+    .cta-button{display:inline-block; background:#ff6a3d; color:#fff; padding:1rem 2.5rem; border-radius:12px; text-decoration:none; font-weight:600; font-size:1.1rem; transition:all 0.3s ease; box-shadow:0 4px 14px #ff6a3d}
+    .cta-button:hover{background:#ff6a3d; transform:translateY(-2px); box-shadow:0 6px 20px #ff6a3d}
 
 
     /* Footer */
@@ -161,6 +281,8 @@ export default function Home() {
       .hero-ill{order:-1}
       .badges{grid-template-columns:repeat(2, minmax(0,1fr))}
       .foot-grid{grid-template-columns:1fr 1fr}
+      .features-dashboard{grid-template-columns:1fr; gap:2rem}
+      .dashboard-preview{position:relative; top:0}
     }
     .container {
     width: min(var(--container), 92%);
@@ -178,6 +300,11 @@ export default function Home() {
       .features-grid{grid-template-columns:1fr}
       .badges{grid-template-columns:1fr}
       .foot-grid{grid-template-columns:1fr}
+      .animated-badge{font-size:14px; gap:0.4rem}
+      .animated-badge img{max-height:35px}
+      .features-dashboard{grid-template-columns:1fr; gap:1.5rem}
+      .feature-item{padding-left:1rem}
+      .feature-item h3{font-size:1.1rem}
     }
   
   h1 {
@@ -350,6 +477,11 @@ export default function Home() {
   <section class="hero" id="home">
     <div class="container wrap">
       <div>
+        <div id="animated-badge" class="animated-badge">
+          <span id="badge-text">Currently in:</span>
+          <img src="/img/1991.png" alt="1991" />
+          <span id="badge-extra-text" style="display:none;"></span>
+        </div>
         <div class="eyebrow">The first vibe clouding tool</div>
         <h1>Cloud Blocks</h1>
         <p class="lead">Create real cloud environments instantly. Use Cloud Architect AI Agent to spin up solutions, experiment safely, and architect like a pro.</p>
@@ -439,64 +571,64 @@ export default function Home() {
     </div>
   </section>
 
+  <!-- Features Dashboard Section -->
+  <section id="features-dashboard" class="section container">
+  <h2>How it works:</h2>
+    <div class="features-dashboard">
+      <div class="features-list">
+        <div class="feature-item active">
+          <h3>Put business requirments</h3>
+          <p>Describe what you need to build to the chat.</p>
+          <a href="#demo" class="read-more">Chat with AI →</a>
+        </div>
+        <div class="feature-item">
+          <h3>Get architecture diagram</h3>
+          <p>Get fully diagram for different cloud environments.</p>
+          <a href="#demo" class="read-more">Download diagram →</a>
+        </div>
+        <div class="feature-item">
+          <h3>Compare clouds and prices</h3>
+          <p>Apply your changes and observe prices for different clouds.</p>
+          <a href="#demo" class="read-more">See prices →</a>
+        </div>
+         <div class="feature-item">
+          <h3>Apply it on your cloud</h3>
+          <p>Get Terraform scripts for your easily deployment.</p>
+          <a href="#demo" class="read-more">Start now →</a>
+        </div>
+      </div>
+      <div class="dashboard-preview">
+        <img src="/img/app-preview.png" alt="Cloud Blocks Dashboard Preview" />
+      </div>
+    </div>
+  </section>
+
   <!-- Architect diagram -->
-  <section id="architect" class="section container">
-    <h2>Build like a Pro Solution Architect</h2>
-    <p class="sub">Describe what you need to build -> get fully diagram for different cloud environments -> observe prices -> deploy into your cloud account.</p>
-    <div class="diagram">
-      <div style="position: relative; padding-bottom: 49.21875%; height: 0;">
-        <img 
-          src="/img/preview.png" 
-          alt="Cloud Blocks real environment preview" 
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; border-radius: 14px; display: block;"
-        >
-      </div>
+  <section id="architect" class="architect-section section">
+   <div class="container inner">
+    <h2>CloudBlocks helps in architecture Pre-Sales</h2>
+    <p>Deliver faster architecture proposals to your clients with AI-powered architecture tool.</p>
+   </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container inner">
+      <h2>Ready to accelerate your Pre Sales?</h2>
+      <a href="/start/demo" class="cta-button">Get architecture proposal right now!</a>
     </div>
   </section>
-  <section  class="section container">
-    <h2>Taking part in IdeasLab Accelerator</h2>
-  <article class="feat" style="width: 100%; max-width: 400px; overflow: hidden; border-radius: 20px;">
-    <div style="width: 100%;">
-      <img 
-        src="/img/ucu.png" 
-        alt="Feature image" 
-        style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: 20px;"
-      >
-    </div>
-  </article>
-  </section>
+
   <!-- Pricing -->
-  <section id="pricing" class="section container">
-    <h2>Choose your flexible plan.</h2>
-    <div class="pricing-wrap">
-      <div class="card price-card">
-        <div style="display:flex; align-items:center; gap:.6rem; color:#6b7280">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-6"/></svg>
-          <span>Be our early adopter</span>
-        </div>
-        <h3>Get features as we roll them out</h3>
-        <div style="margin:.6rem 0 1rem">
-          <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Free micro version first</div>
-          <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Early access to lab version</div>
-          <div class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Feature voting & feedback loop</div>
-        </div>
-        <div class="price">$0</div>
-        <p style="margin:.2rem 0 1rem; color:#6b7280">Join now and help us shape the product.</p>
-        <a class="btn" href="/start/demo">Get demo →</a>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Newsletter -->
   <section id="demo" class="newsletter">
     <div class="bg" aria-hidden="true"></div>
     <div class="container inner">
-      <h2>Leave your email for future updates</h2>
+      <h2>Request demo version</h2>
       <p style="opacity:.9; margin-bottom: 1rem;">Try demo for 7 days with full features.</p>
-      <form id="subscribe-form" class="field" onsubmit="return false;">
-        <input id="email-input" class="input" type="email" required placeholder="Email" aria-label="Email" />
-        <button class="btn" type="submit">Subscribe</button>
-      </form>
+       <a class="btn" href="/start/demo">Get demo →</a>
     </div>
   </section>
 
