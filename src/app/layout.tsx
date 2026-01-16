@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cloud Blocks — DevOps Co-Pilot",
+  title: "Cloud Blocks — AI Cloud Architect",
   description:
-    "Cloud Blocks — AI Cloud Arcchitect Agent, building real solutions from zero.",
+    "From Concept to Cloud in Minutes. Design, Validate, and Deploy infrastructure through a chat interface.",
 };
 
 export default function RootLayout({
