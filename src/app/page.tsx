@@ -444,6 +444,10 @@ rgb(255, 144, 84);
     .foot a{color:#4b5563; text-decoration:none}
     .foot ul{list-style:none; padding:0; margin:.6rem 0 0; display:grid; gap:.4rem}
     .copyright{margin-top:2rem; color:#6b7280; font-size:.9rem}
+    .social-icons{display:flex; gap:1rem; margin-top:1rem; align-items:center}
+    .social-icons a{color:#4b5563; transition:color 0.3s ease; display:flex; align-items:center; justify-content:center}
+    .social-icons a:hover{color:#111827}
+    .social-icons svg{width:20px; height:20px}
 
     /* Responsive */
     @media (max-width: 960px){
@@ -968,6 +972,22 @@ rgb(255, 144, 84);
           <img src="/img/logo.png" alt="Cloud Blocks logo" class="logo-img">
           <span>Cloud Blocks</span>
         </a>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/cloud.blocks?igsh=MWNmMmhjN3B1d3ZpcQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M17.5 6.5h.01"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/cloudblockslearn/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
       <div class="foot">
         
       </div>
