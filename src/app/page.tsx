@@ -165,6 +165,8 @@ export default function Home() {
     /* Hero */
     .hero{position:relative; overflow:hidden}
     .hero .wrap{display:grid; grid-template-columns: 1.05fr .95fr; gap:2rem; align-items:center; padding:3.4rem 0 2.6rem}
+    .hero .container{width:min(var(--container), 92%); margin-inline:auto; padding-inline:clamp(1rem, 3vw, 2rem)}
+    
     .eyebrow{color:var(--muted); font-weight:600; letter-spacing:.06em; text-transform:uppercase; font-size:.78rem}
     h1{font-size: clamp(2rem, 3.4vw + 1rem, 3.6rem); line-height:1.05; letter-spacing:-.03em; margin:.5rem 0 1.1rem}
     .animated-badge{display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; transition:opacity 0.5s ease-in-out; font-size:clamp(14px, 2vw, 22px); color:var(--muted); font-weight:500}
@@ -174,34 +176,46 @@ export default function Home() {
     h2{font-weight: 700;}
     .lead{font-size:1.05rem; color:#4b5563; max-width:44ch}
     .hero-cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.4rem}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.1rem; background:var(--primary); color:#fff; border:none; border-radius:14px; font-weight:600; text-decoration:none; box-shadow:0 8px 20px rgba(249,115,22,.25); transition:.25s ease;}
+    .btn:hover{transform:translateY(-1px); background:var(--primary-dark); box-shadow:0 12px 26px rgba(249,115,22,.32)}
+    .btn.secondary{background:#fff; color:var(--text); border:1px solid var(--border); box-shadow:var(--shadow)}
     .hero-ill{
       aspect-ratio: 4 / 3; border-radius: 22px; background:
-        radial-gradient(1200px 600px at -10% 110%, rgba(249,115,22,.12), transparent 60%),
-        radial-gradient(800px 500px at 120% -10%, rgba(253,186,116,.35), transparent 60%),
-        linear-gradient(180deg, #fff, #fff);
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 40px),
+        radial-gradient(1200px 600px at -10% 110%, rgba(249, 116, 22, 0.01), transparent 60%),
+        radial-gradient(800px 500px at 120% -10%, rgba(253, 187, 116, 0.07), transparent 60%),
+        linear-gradient(180deg, #f8f9fa, #ffffff);
       box-shadow: var(--shadow);
       display:flex; align-items:center; justify-content:center; position:relative;
     }
     .hero-ill svg{width:78%; max-width:520px}
 
     /* Ribbon statement */
-    .ribbon{position:relative; margin:2rem 0 0}
+    .ribbon{position:relative; margin:0rem 0 0; width:min(var(--container), 92%); margin-inline:auto; padding-inline:clamp(1rem, 3vw, 2rem)}
     .ribbon .card{background:linear-gradient(180deg,#fff, #fff); border:1px solid var(--border); padding:1.2rem 1.4rem; border-radius:var(--radius); box-shadow:var(--shadow); display:grid; grid-template-columns:1fr auto; align-items:center; gap:1rem}
     .ribbon strong{color:var(--accent)}
     .ribbon .link{color:var(--accent); text-decoration:none; font-weight:600}
 
     /* Features grid */
-    .features{padding: 2.6rem 0 1.2rem}
+    .features{padding: 5rem 0 3rem; background:linear-gradient(to bottom, #ffffff, #fafafa)}
     
     /* Add padding to sections for better anchor navigation */
     section[id] {
       scroll-margin-top: 80px;
     }
-    .features-grid{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1rem}
-    .feat{background:#fff; border:1px solid var(--border); border-radius:16px; padding:1rem 1.1rem; display:flex; gap:.9rem; align-items:center; box-shadow:var(--shadow)}
-    .feat .ic{width:36px; height:36px; display:grid; place-items:center; border-radius:10px; background:radial-gradient(120% 120% at 10% 10%, #ffd1b5, #ff8f59 70%)}
-    .feat h4{margin:0; font-size:1rem; font-weight: 700}
-    .feat p{margin:.2rem 0 0; color:#6b7280; font-size:.95rem}
+    .features-grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin-top:3rem}
+    .feat{background:linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85)); backdrop-filter:blur(10px); border:1px solid rgba(255,106,61,0.1); border-radius:24px; padding:2.5rem; display:flex; flex-direction:column; gap:1.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.06), 0 0 0 1px rgba(255,106,61,0.05); transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position:relative; overflow:hidden}
+    .feat::before{content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #ff6a3d, #ff8f59, #ffb08a); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease}
+    .feat::after{content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(255,106,61,0.1) 0%, transparent 70%); opacity:0; transition:opacity 0.4s ease; pointer-events:none}
+    .feat:hover{transform:translateY(-8px) scale(1.02); box-shadow:0 20px 40px rgba(255,106,61,0.15), 0 0 0 1px rgba(255,106,61,0.2); border-color:rgba(255,106,61,0.3); background:linear-gradient(135deg, rgba(255,255,255,1), rgba(255,255,255,0.95))}
+    .feat:hover::before{transform:scaleX(1)}
+    .feat:hover::after{opacity:1}
+    .feat .ic{width:64px; height:64px; display:grid; place-items:center; border-radius:18px; background:linear-gradient(135deg, #ff6a3d 0%, #ff8f59 50%, #ffb08a 100%); color:#fff; flex-shrink:0; transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow:0 8px 16px rgba(255,106,61,0.3); position:relative; z-index:1}
+    .feat:hover .ic{transform:scale(1.15) rotate(10deg); box-shadow:0 12px 24px rgba(255,106,61,0.4)}
+    .feat .ic svg{width:28px; height:28px; stroke-width:2.5; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))}
+    .feat h4{margin:0; font-size:1.4rem; font-weight: 700; color:var(--text); line-height:1.3; letter-spacing:-0.02em}
+    .feat p{margin:.75rem 0 0; color:#64748b; font-size:1.05rem; line-height:1.7}
 
     /* Certifications */
     .section{padding: 3.4rem 0}
@@ -216,16 +230,25 @@ export default function Home() {
     .diagram img{max-width:100%; border-radius:14px; display:block}
 
     /* Features Dashboard Section */
-    .features-dashboard{display:grid; grid-template-columns: 1fr 1.2fr; gap:3rem; align-items:start; margin-top:2rem}
+    .features-dashboard{display:grid; grid-template-columns: 1fr 1.2fr; gap:4rem; align-items:start; margin-top:3rem}
     .features-list{display:flex; flex-direction:column; gap:1.5rem}
-    .feature-item{position:relative; padding-left:1.5rem; border-left:3px solid transparent; transition:all 0.3s ease}
-    .feature-item.active{border-left-color:var(--accent)}
-    .feature-item h3{margin:0 0 .5rem; font-size:1.25rem; font-weight:700; color:var(--text)}
-    .feature-item p{margin:0 0 1rem; color:var(--muted); font-size:.95rem; line-height:1.6}
-    .feature-item .read-more{color:var(--accent); text-decoration:none; font-weight:600; font-size:.9rem; display:inline-flex; align-items:center; gap:.3rem; transition:color 0.2s}
-    .feature-item .read-more:hover{color:var(--primary-dark)}
-    .dashboard-preview{background:#fff; border:1px solid var(--border); border-radius:18px; padding:1.5rem; box-shadow:var(--shadow); position:sticky; top:100px}
-    .dashboard-preview img{width:100%; height:auto; border-radius:12px; display:block}
+    .feature-item{position:relative; padding:2rem 2rem 2rem 2.5rem; border-left:4px solid transparent; border-radius:20px; background:linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)); backdrop-filter:blur(10px); transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor:pointer; border:1px solid rgba(255,106,61,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+    .feature-item::before{content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg, #ff6a3d, #ff8f59, #ffb08a); transform:scaleY(0); transform-origin:top; transition:transform 0.4s ease; border-radius:0 4px 4px 0}
+    .feature-item:hover{transform:translateX(8px); background:linear-gradient(135deg, rgba(255,255,255,1), rgba(255,255,255,0.95)); box-shadow:0 8px 28px rgba(255,106,61,0.12), 0 0 0 1px rgba(255,106,61,0.15); border-color:rgba(255,106,61,0.2)}
+    .feature-item:hover::before{transform:scaleY(1)}
+    .feature-item.active{border-left-color:var(--accent); background:linear-gradient(135deg, rgba(255,106,61,0.08), rgba(255,255,255,0.95)); box-shadow:0 6px 24px rgba(255,106,61,0.15), 0 0 0 1px rgba(255,106,61,0.2)}
+    .feature-item.active::before{transform:scaleY(1)}
+    .feature-item h3{margin:0 0 .75rem; font-size:1.4rem; font-weight:700; color:var(--text); line-height:1.3; letter-spacing:-0.01em; transition:color 0.3s}
+    .feature-item:hover h3{color:#ff6a3d}
+    .feature-item p{margin:0 0 1.25rem; color:#64748b; font-size:1.05rem; line-height:1.7}
+    .feature-item .read-more{color:var(--accent); text-decoration:none; font-weight:600; font-size:1rem; display:inline-flex; align-items:center; gap:.5rem; transition:all 0.3s ease; padding:.6rem 1.2rem; border-radius:10px; background:rgba(255,106,61,0.08); border:1px solid rgba(255,106,61,0.15)}
+    .feature-item .read-more:hover{color:#fff; background:linear-gradient(135deg, #ff6a3d, #ff8f59); border-color:transparent; transform:translateX(4px); box-shadow:0 4px 16px rgba(255,106,61,0.3); gap:.75rem}
+    .feature-item .read-more svg{transition:transform 0.3s ease}
+    .feature-item .read-more:hover svg{transform:translateX(4px)}
+    .dashboard-preview{background:linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92)); backdrop-filter:blur(12px); border:1px solid rgba(255,106,61,0.1); border-radius:24px; padding:2rem; box-shadow:0 8px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,106,61,0.05); position:sticky; top:120px; transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1)}
+    .dashboard-preview:hover{box-shadow:0 16px 48px rgba(255,106,61,0.15), 0 0 0 1px rgba(255,106,61,0.2); transform:translateY(-6px)}
+    .dashboard-preview img{width:100%; height:auto; border-radius:16px; display:block; transition:transform 0.4s ease}
+    .dashboard-preview:hover img{transform:scale(1.03)}
 
     /* Pricing */
     .pricing-wrap{display:grid; place-items:center}
@@ -266,6 +289,153 @@ rgb(255, 255, 255);
     .cta-button{display:inline-block; background:#ff6a3d; color:#fff; padding:1rem 2.5rem; border-radius:12px; text-decoration:none; font-weight:600; font-size:1.1rem; transition:all 0.3s ease; box-shadow:0 4px 14px #ff6a3d}
     .cta-button:hover{background:#ff6a3d; transform:translateY(-2px); box-shadow:0 6px 20px #ff6a3d}
 
+    /* Customer Feedbacks Section */
+    .testimonials-section{padding:4rem 0; background:#fff}
+    .testimonials-section h2{text-align:center; font-size: clamp(2rem, 3vw + 1rem, 2.5rem); margin:0 0 3rem; font-weight:700; color:var(--text)}
+    .marquee-wrapper{overflow:hidden; position:relative; width:100%}
+    .marquee{display:flex; gap:1.5rem; animation:marquee 30s linear infinite}
+    .marquee:hover{animation-play-state:paused}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .marquee-content{display:flex; gap:1.5rem; flex-shrink:0}
+    .testimonial-card{flex-shrink:0; width:400px; max-width:90vw; background:#fff; border:1px solid var(--border); border-radius:18px; padding:2rem; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:1rem}
+    .testimonial-header{display:flex; align-items:center; gap:1rem}
+    .testimonial-avatar{width:50px; height:50px; border-radius:50%; background:linear-gradient(135deg, #ff6a3d, #ff8f59); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:1.2rem}
+    .testimonial-info{flex:1}
+    .testimonial-name{font-weight:700; color:var(--text); margin:0 0 0.2rem}
+    .testimonial-role{font-size:0.9rem; color:var(--muted); margin:0}
+    .testimonial-rating{display:flex; gap:0.2rem; color:#fbbf24; font-size:1.2rem}
+    .testimonial-text{color:var(--muted); line-height:1.6; margin:0; font-size:0.95rem}
+
+    /* Build Great Things Section */
+    .build-section{position:relative; overflow:hidden; padding:5rem 0; background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 1px, transparent 1px, transparent 20px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 1px, transparent 1px, transparent 20px),
+rgb(255, 144, 84);
+      border-radius:24px; margin:3rem auto; max-width:min(var(--container), 92%); text-align:center; color:#fff}
+    .build-section .inner{position:relative; z-index:1; padding:2rem}
+    .build-section h2{font-size: clamp(2.5rem, 5vw + 1rem, 4rem); margin:0 0 3rem; font-weight:700; color:#fff; line-height:1.2}
+    .build-buttons{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap}
+    .build-button-primary{display:inline-flex; align-items:center; gap:0.5rem; background:#ff6a3d; color:#fff; padding:1rem 2rem; border-radius:12px; text-decoration:none; font-weight:600; font-size:1rem; transition:all 0.3s ease; box-shadow:0 4px 14px rgba(255,106,61,0.4)}
+    .build-button-primary:hover{background:#ea580c; transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,106,61,0.5)}
+    .build-button-secondary{display:inline-flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.15); color:#fff; padding:1rem 2rem; border-radius:12px; text-decoration:none; font-weight:600; font-size:1rem; transition:all 0.3s ease; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2)}
+    .build-button-secondary:hover{background:rgba(255,255,255,0.25); transform:translateY(-2px)}
+
+    /* Partner Great Things Section */
+ .partner-section{
+  position:relative;
+  overflow:hidden;
+  padding:5rem 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.05) 0px,
+      rgba(0,0,0,0.05) 1px,
+      transparent 1px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.05) 0px,
+      rgba(0,0,0,0.05) 1px,
+      transparent 1px,
+      transparent 20px
+    ),
+    #ffffff;
+  border-radius:24px;
+  margin:3rem auto;
+  max-width:min(var(--container), 92%);
+  text-align:center;
+  color:#111;
+}
+
+.partner-section .inner{
+  position:relative;
+  z-index:1;
+  padding:2rem;
+}
+
+.partner-section h2{
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  margin:0 0 3rem;
+  font-weight:700;
+  color:#111;
+  line-height:1.2;
+}
+
+.partner-buttons{
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* Primary Orange Button */
+.partner-button-primary{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  background:#ff7a1a;
+  color:#fff;
+  padding:1rem 2rem;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:1rem;
+  transition:all 0.3s ease;
+  box-shadow:0 4px 14px rgba(255,122,26,0.35);
+}
+
+.partner-button-primary:hover{
+  background:#ea580c;
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(255,122,26,0.45);
+}
+
+/* Secondary Orange Outline Button */
+.partner-button-secondary{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  background:transparent;
+  color:#ff7a1a;
+  padding:1rem 2rem;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:1rem;
+  transition:all 0.3s ease;
+  border:2px solid #ff7a1a;
+}
+
+.partner-button-secondary:hover{
+  background:#ff7a1a;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.partner-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  text-align: center;
+}
+
+.partner-logo {
+  max-height: 48px;
+  width: auto;
+}
+
+.partner-description {
+  max-width: 520px;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+
+
 
     /* Footer */
     footer{padding:2.6rem 0 2rem; background:#fff}
@@ -278,7 +448,6 @@ rgb(255, 255, 255);
     /* Responsive */
     @media (max-width: 960px){
       .hero .wrap{grid-template-columns:1fr; padding:2.4rem 0 1.6rem}
-      .hero-ill{order:-1}
       .badges{grid-template-columns:repeat(2, minmax(0,1fr))}
       .foot-grid{grid-template-columns:1fr 1fr}
       .features-dashboard{grid-template-columns:1fr; gap:2rem}
@@ -303,8 +472,20 @@ rgb(255, 255, 255);
       .animated-badge{font-size:14px; gap:0.4rem}
       .animated-badge img{max-height:35px}
       .features-dashboard{grid-template-columns:1fr; gap:1.5rem}
-      .feature-item{padding-left:1rem}
-      .feature-item h3{font-size:1.1rem}
+      .feature-item{padding:1.5rem 1.5rem 1.5rem 2rem}
+      .feature-item h3{font-size:1.2rem}
+      .features-grid{grid-template-columns:1fr; gap:1.5rem}
+      .feat{padding:2rem}
+      .feat .ic{width:56px; height:56px}
+      .feat h4{font-size:1.2rem}
+      .feat p{font-size:1rem}
+      .build-section{padding:3rem 1rem; margin:2rem 1rem}
+      .build-section h2{font-size:clamp(1.8rem, 4vw + 1rem, 3rem); margin-bottom:2rem}
+      .build-buttons{flex-direction:column; align-items:stretch}
+      .build-button-primary, .build-button-secondary{width:100%; justify-content:center}
+      .testimonials-section{padding:3rem 0}
+      .testimonials-section h2{font-size:clamp(1.6rem, 3vw + 1rem, 2rem); margin-bottom:2rem}
+      .testimonial-card{width:320px; padding:1.5rem}
     }
   
   h1 {
@@ -408,7 +589,6 @@ rgb(255, 255, 255);
     .hero .wrap {
       grid-template-columns: 1fr;
     }
-    .hero-ill { order: -1; }
     .nav a.btn { display: none; } /* hide demo btn to save space */
   }
   .logo-img {
@@ -430,6 +610,12 @@ rgb(255, 255, 255);
   transform-origin: bottom center; /* теперь вращается от нижнего края */
   animation: swing 3s ease-in-out infinite;
 }
+  .orange-text {
+  background: linear-gradient(90deg, #FF8C00, #FF4500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
   `,
         }}
       />
@@ -448,7 +634,7 @@ rgb(255, 255, 255);
           <a href="#features">Features</a>
           <a href="#certs">Cloud Providers</a>
           <a href="#architect">Preview</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#partners">Partners</a>
         </div>
         <a class="btn vibrant pulse" href="/start/demo">Request a demo</a>
         <button class="hamb" aria-label="Open menu" onclick="document.querySelector('.mobile').showModal()">
@@ -468,7 +654,7 @@ rgb(255, 255, 255);
       <a href="#features">Features</a>
       <a href="#certs">Cloud Providers</a>
       <a href="#architect">Preview</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#partners">Partners</a>
       <a class="btn" href="/start/demo">Request a demo</a>
     </div>
   </dialog>
@@ -482,94 +668,105 @@ rgb(255, 255, 255);
           <img src="/img/1991.png" alt="1991" />
           <span id="badge-extra-text" style="display:none;"></span>
         </div>
-        <div class="eyebrow">The first vibe clouding tool</div>
-        <h1>Cloud Blocks</h1>
-        <p class="lead">Create real cloud environments instantly. Use Cloud Architect AI Agent to spin up solutions, experiment safely, and architect like a pro.</p>
+       <h1>From <span class="orange-text">Concept</span> to <span class="orange-text">Cloud</span> in Minutes.</h1>
+        <p class="lead">
+        Use AI Cloud Architect to turn complex requirements into live cloud environments. Design, Validate, and Deploy infrastructure through a chat interface.</p>
         <div class="hero-cta">
           <a class="btn" href="/start/demo">
-            <span>Become early adopter</span>
+            <span>Start creating with AI</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a class="btn secondary" href="#features">Explore features</a>
+          <a class="btn secondary" href="https://cal.com/viktoriia-petruk-2zyfcw/30min?overlayCalendar=true&date=2026-01-20">
+         <span> Book Free Consultation call</span>
+           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          </a>
         </div>
       </div>
-      <div aria-hidden="true" style="aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; width: 100%; max-width: 900px; margin-inline: auto;">
+      <div class="hero-ill" aria-hidden="true" style="overflow: hidden; width: 100%; max-width: 900px; margin-inline: auto;">
        <img 
         src="/img/chat3.png" 
         alt="Cloud Blocks real environment preview" 
         class="swing"
-        style="width:100%; height:100%; object-fit:contain; display:block;"
+        style="width:100%; height:100%; object-fit:contain; display:block; position:relative; z-index:1;"
       />
-      </div>
-    </div>
-
-    <div class="container ribbon">
-      <div class="card">
-        <p><strong>Cloud Blocks</strong> is your DevOps CoPilot that allows you to build cloud solutions effectively.</p>
-       
-        <a class="link" href="#features">Learn more →</a>
       </div>
     </div>
   </section>
 
   <!-- Features -->
-  <section id="features" class="features container">
-    <div class="features-grid">
-      <article class="feat">
-        <span class="ic" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
-        </span>
-        <div>
-          <h4>Auto-generated diagram</h4>
-          <p>Get explainable diagarm of each service that you need.</p>
-        </div>
-      </article>
-      <article class="feat">
-        <span class="ic" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5-5 5 5"/></svg>
-        </span>
-        <div>
-          <h4>Cloud agnostic</h4>
-          <p>Choose from variety of clouds where you want to proceed.</p>
-        </div>
-      </article>
-      <article class="feat">
-        <span class="ic" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M8 21h8M12 17V3"/></svg>
-        </span>
-        <div>
-          <h4>Terraform generation</h4>
-          <p>Get generated Terraform scripts for your easily deployment.</p>
-        </div>
-      </article>
-      <article class="feat">
-        <span class="ic" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-        </span>
-        <div>
-          <h4>Build for your needs</h4>
-          <p>Connect your account or use solution instantly on our servers.</p>
-        </div>
-      </article>
-    </div>
-  </section>
+  <section id="features" class="section container">
+  <h2>Features</h2>
+  <div class="features-grid">
+    
+    <article class="feat">
+      <span class="ic ic-bg">
+        <!-- Target icon -->
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+        </svg>
+      </span>
+      <div>
+        <h4>Instant AI Visualization</h4>
+        <p>Use AI to transform client requirements into professional, high-fidelity architecture diagrams in seconds.</p>
+      </div>
+    </article>
 
-  <!-- Certifications -->
-  <section id="certs" class="section container">
-    <h2>Supported clouds</h2>
-    <p class="sub">AWS, Azure, GCP, and more.</p>
-    <div class="badges">
-      <div class="badge">
-        <img src="/img/aws-icon.png" alt="Mountain scene">
+    <article class="feat">
+      <span class="ic ic-bg">
+        <!-- Growth chart icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M4 16L10 10L14 14L20 8"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M16 8H20V12"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      </span>
+      <div>
+        <h4>Multi-Cloud Support</h4>
+        <p>Support any client ecosystem. Design once and deploy anywhere - AWS, Azure, or GCP - without retraining your internal team.</p></p>
       </div>
-      <div class="badge">
-        <img src="/img/azure.png" alt="Mountain scene">
+    </article>
+
+    <article class="feat">
+      <span class="ic ic-bg">
+        <!-- Lightning icon -->
+        <svg viewBox="0 0 24 24">
+          <path d="M13 2L3 14h7l-1 8 10-12h-7z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <div>
+        <h4>Automated Deployment</h4>
+        <p>Go from design to production in minutes. Generate production-ready Terraform scripts to slash deployment costs and errors</p>
       </div>
-      <div class="badge">
-        <img src="/img/gcp.png" alt="Mountain scene">
-      </div>
-    </div>
-  </section>
+    </article>
+
+  </div>
+</section>
+
+
+  
 
   <!-- Features Dashboard Section -->
   <section id="features-dashboard" class="section container">
@@ -579,43 +776,157 @@ rgb(255, 255, 255);
         <div class="feature-item active">
           <h3>Put business requirments</h3>
           <p>Describe what you need to build to the chat.</p>
-          <a href="#demo" class="read-more">Chat with AI →</a>
+          <a href="/start/demo" class="read-more">Chat with AI →</a>
         </div>
         <div class="feature-item">
           <h3>Get architecture diagram</h3>
           <p>Get fully diagram for different cloud environments.</p>
-          <a href="#demo" class="read-more">Download diagram →</a>
+          <a href="/start/demo" class="read-more">Download diagram →</a>
         </div>
         <div class="feature-item">
           <h3>Compare clouds and prices</h3>
           <p>Apply your changes and observe prices for different clouds.</p>
-          <a href="#demo" class="read-more">See prices →</a>
+          <a href="/start/demo" class="read-more">Compare prices →</a>
         </div>
          <div class="feature-item">
           <h3>Apply it on your cloud</h3>
           <p>Get Terraform scripts for your easily deployment.</p>
-          <a href="#demo" class="read-more">Start now →</a>
+          <a href="/start/demo" class="read-more">Start now →</a>
         </div>
       </div>
-      <div class="dashboard-preview">
+      <div class="dashboard-preview" id="architect">
         <img src="/img/app-preview.png" alt="Cloud Blocks Dashboard Preview" />
       </div>
     </div>
   </section>
-
-  <!-- Architect diagram -->
-  <section id="architect" class="architect-section section">
-   <div class="container inner">
-    <h2>CloudBlocks helps in architecture Pre-Sales</h2>
-    <p>Deliver faster architecture proposals to your clients with AI-powered architecture tool.</p>
-   </div>
+  <!-- Certifications -->
+  <section id="certs" class="section container">
+    <h2>Supported clouds</h2>
+    <p class="sub">AWS, Azure, GCP, and more.</p>
+    <div class="badges">
+      <div class="badge feat">
+        <img src="/img/aws-icon.png" alt="Mountain scene">
+      </div>
+      <div class="badge feat">
+        <img src="/img/azure.png" alt="Mountain scene">
+      </div>
+      <div class="badge feat">
+        <img src="/img/gcp.png" alt="Mountain scene">
+      </div>
+    </div>
   </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="container inner">
-      <h2>Ready to accelerate your Pre Sales?</h2>
-      <a href="/start/demo" class="cta-button">Get architecture proposal right now!</a>
+<section class="partner-section" id="partners">
+    <div class="inner">
+      <h2>Get more cloud credits from our partner:</h2>
+      <div class="partner-info" >
+      <img 
+        src="/img/spendbase.png" 
+        alt="Spendabse logo" 
+        class="partner-logo"
+      />
+      <p class="partner-description">
+        Spendabse helps startups optimize cloud spending and unlock extra credits
+        across major cloud providers.
+      </p>
+    </div>
+      <div class="partner-buttons">
+        <a href="https://cal.com/viktoriia-petruk-2zyfcw/30min?overlayCalendar=true&date=2026-01-20" class="partner-button-primary">
+          <span>Book a Discovery call</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </a>
+        <a href="https://www.spendbase.co/partners/cloudblocks/" class="partner-button-secondary">
+          <span>Get from CloudBlocks</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Customer Feedbacks Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2>Customer Feedbacks</h2>
+      <div class="marquee-wrapper">
+        <div class="marquee">
+          <div class="marquee-content">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">VN</div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Vladyslav</div>
+                  <div class="testimonial-role">Software Engineer, FinTech product</div>
+                </div>
+              </div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">CloudBlocks saved us weeks of work. The AI agent understands our needs and creates exactly what we're looking for.</p>
+            </div>
+            
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">M</div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Mark</div>
+                  <div class="testimonial-role">Solution Architect</div>
+                </div>
+              </div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">Best tool for pre-sales architecture proposals. We deliver professional diagrams to clients faster than ever before.</p>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">AL</div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Alex</div>
+                  <div class="testimonial-role">Engineering Manager, Outsourcing company</div>
+                </div>
+              </div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">The cloud comparison feature is a game-changer. We can now make informed decisions about which cloud provider to use for each project.</p>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">DS</div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Denis</div>
+                  <div class="testimonial-role">Software Engineer</div>
+                </div>
+              </div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">CloudBlocks helped me to learn in building cloud systems and get new promotion in architecture role.</p>
+            </div>
+          </div>
+          <div class="marquee-content" aria-hidden="true">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">IF</div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Illia</div>
+                  <div class="testimonial-role">CTO, DeepTech startup</div>
+                </div>
+              </div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">CloudBlocks has revolutionized our cloud architecture process. We can now create complex infrastructure diagrams in minutes instead of days!</p>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">VP</div>
+                <div class="testimonial-info">
+                  <div class="testimonial-name">Viktoriia</div>
+                  <div class="testimonial-role">Software Engineer, Insurance product</div>
+                </div>
+              </div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">The AI-powered architecture tool is incredible. It understands our requirements and help me to build my projects.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -623,12 +934,29 @@ rgb(255, 255, 255);
   
 
   <!-- Newsletter -->
-  <section id="demo" class="newsletter">
-    <div class="bg" aria-hidden="true"></div>
-    <div class="container inner">
-      <h2>Request demo version</h2>
-      <p style="opacity:.9; margin-bottom: 1rem;">Try demo for 7 days with full features.</p>
-       <a class="btn" href="/start/demo">Get demo →</a>
+
+
+  <!-- Build Great Things Section -->
+  <section class="build-section">
+    <div class="inner">
+      <h2>Build your first cloud architecture with AI -></h2>
+      <div class="build-buttons">
+        <a href="https://cal.com/viktoriia-petruk-2zyfcw/30min?overlayCalendar=true&date=2026-01-20" class="build-button-primary">
+          <span>Share your Insights</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </a>
+        <a href="/start/demo" class="build-button-secondary">
+          <span>Start for free</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
