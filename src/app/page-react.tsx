@@ -26,9 +26,9 @@ export default function Home() {
       });
 
       // Send confirmation email
-      await emailjs.send("service_6pgksdi", "template_l21ckqw", {
-        user_email: email,
-      });
+      // await emailjs.send("service_6pgksdi", "template_l21ckqw", {
+      //   user_email: email,
+      // });
 
       alert("Thanks! We'll be in touch.");
       setEmail("");

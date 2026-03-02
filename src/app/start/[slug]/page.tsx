@@ -231,9 +231,9 @@ export default function StartPage() {
       // });
 
       // Send confirmation email
-      await emailjs.send("service_6pgksdi", "template_l21ckqw", {
-        user_email: email,
-      });
+      // await emailjs.send("service_6pgksdi", "template_l21ckqw", {
+      //   user_email: email,
+      // });
 
       // For special variant slugs, show thank you page instead of redirecting
       if (slug && specialVariantSlugs.includes(slug)) {
