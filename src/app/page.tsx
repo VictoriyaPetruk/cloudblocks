@@ -16,7 +16,7 @@ export default function Home() {
 
       if (link) {
         e.preventDefault();
-        router.push("/start/demo");
+        router.push("https://app.cloudblocks.tech");
       }
     };
 
@@ -640,7 +640,7 @@ rgb(255, 144, 84);
           <a href="#architect">Preview</a>
           <a href="#partners">Partners</a>
         </div>
-        <a class="btn vibrant pulse" href="/start/demo">Request a demo</a>
+        <a class="btn vibrant pulse" href="/start/demo">Launch app</a>
         <button class="hamb" aria-label="Open menu" onclick="document.querySelector('.mobile').showModal()">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
@@ -659,7 +659,7 @@ rgb(255, 144, 84);
       <a href="#certs">Cloud Providers</a>
       <a href="#architect">Preview</a>
       <a href="#partners">Partners</a>
-      <a class="btn" href="/start/demo">Request a demo</a>
+      <a class="btn" href="/start/demo">Launch app</a>
     </div>
   </dialog>
 

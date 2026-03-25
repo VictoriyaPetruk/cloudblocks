@@ -91,7 +91,7 @@ export default function Home() {
                 href='#demo'
                 className='bg-white text-gray-900 border border-gray-200 px-4 py-2 rounded-xl font-semibold shadow-sm hover:shadow-md transition-all'
               >
-                Request a demo
+                Launch app
               </Link>
             </div>
 
