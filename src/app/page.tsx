@@ -799,7 +799,7 @@ rgb(255, 144, 84);
         </div>
       </div>
       <div class="dashboard-preview" id="architect">
-        <img src="/img/app-preview.png" alt="Cloud Blocks Dashboard Preview" />
+        <img src="/img/fullapp.png" alt="Cloud Blocks Dashboard Preview" />
       </div>
     </div>
   </section>
