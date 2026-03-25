@@ -761,8 +761,8 @@ rgb(255, 144, 84);
         </svg>
       </span>
       <div>
-        <h4>Alternatives on each servie</h4>
-        <p>System will suggest the best alternatives for your solution.</p>
+        <h4>Alternatives on each servies</h4>
+        <p>Discover  the best alternatives for your solution to save on costs and scale.</p>
       </div>
     </article>
 
