@@ -674,7 +674,7 @@ rgb(255, 144, 84);
         </div>
        <h1>From <span class="orange-text">Concept</span> to <span class="orange-text">Cloud</span> in Minutes.</h1>
         <p class="lead">
-        Use AI Cloud Architect to turn complex requirements into live cloud environments, discover alternatives, security cheks and risks.</p>
+        Use AI Cloud Architect to turn complex requirements into live cloud environments, discover alternatives, do security cheks and risks.</p>
         <div class="hero-cta">
           <a class="btn" href="https://app.cloudblocks.tech">
             <span>Start creating with AI</span>
