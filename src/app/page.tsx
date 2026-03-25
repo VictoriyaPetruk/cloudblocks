@@ -674,9 +674,10 @@ rgb(255, 144, 84);
         </div>
        <h1>From <span class="orange-text">Concept</span> to <span class="orange-text">Cloud</span> in Minutes.</h1>
         <p class="lead">
-        Use AI Cloud Architect to turn complex requirements into live cloud environments. Design, Validate, and Deploy infrastructure through a chat interface.</p>
+        Start from white paper is hard.
+        Use AI Cloud Architect to turn complex requirements into live cloud environments. Design, Validate, discover alternative of services through a chat interface.</p>
         <div class="hero-cta">
-          <a class="btn" href="/start/demo">
+          <a class="btn" href="https://app.cloudblocks.tech">
             <span>Start creating with AI</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -745,7 +746,7 @@ rgb(255, 144, 84);
       </span>
       <div>
         <h4>Multi-Cloud Support</h4>
-        <p>Support any client ecosystem. Design once and deploy anywhere - AWS, Azure, or GCP - without retraining your internal team.</p></p>
+        <p>Support any client ecosystem. Design once and use anywhere - AWS, Azure, or GCP - without retraining your internal team.</p></p>
       </div>
     </article>
 
@@ -761,8 +762,8 @@ rgb(255, 144, 84);
         </svg>
       </span>
       <div>
-        <h4>Automated Deployment</h4>
-        <p>Go from design to production in minutes. Generate production-ready Terraform scripts to slash deployment costs and errors</p>
+        <h4>Alternatives on each servie</h4>
+        <p>System will suggest the best alternatives for your solution.</p>
       </div>
     </article>
 
@@ -793,8 +794,8 @@ rgb(255, 144, 84);
           <a href="/start/demo" class="read-more">Compare prices →</a>
         </div>
          <div class="feature-item">
-          <h3>Apply it on your cloud</h3>
-          <p>Get Terraform scripts for your easily deployment.</p>
+          <h3>Improve yout architecture with AI</h3>
+          <p>Check Security, Risks, Terraform scripts and discover alternative services.</p>
           <a href="/start/demo" class="read-more">Start now →</a>
         </div>
       </div>
@@ -954,7 +955,7 @@ rgb(255, 144, 84);
             <line x1="3" y1="10" x2="21" y2="10"/>
           </svg>
         </a>
-        <a href="/start/demo" class="build-button-secondary">
+        <a href="https://app.cloudblocks.tech" class="build-button-secondary">
           <span>Start for free</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>
