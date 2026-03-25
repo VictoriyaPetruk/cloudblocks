@@ -674,8 +674,8 @@ rgb(255, 144, 84);
         </div>
        <h1>From <span class="orange-text">Concept</span> to <span class="orange-text">Cloud</span> in Minutes.</h1>
         <p class="lead">
-        Start from white paper is hard.
-        Use AI Cloud Architect to turn complex requirements into live cloud environments. Design, Validate, discover alternative of services through a chat interface.</p>
+        Choose the cloud right services - do not lose money on scaling.
+        Use AI Cloud Architect to turn complex requirements into live cloud environments, discover alternatives, security cheks and risks.</p>
         <div class="hero-cta">
           <a class="btn" href="https://app.cloudblocks.tech">
             <span>Start creating with AI</span>
