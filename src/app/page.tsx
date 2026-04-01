@@ -56,16 +56,17 @@ export default function Home() {
           img!.alt = 'IdeasLab';
           badgeExtraText!.textContent = 'IdeasLab accelerator';
           badgeExtraText!.style.display = 'inline';
-          currentState = 1;
-        } else if (currentState === 1) {
-          // Switch to KNEU
-          badgeText!.textContent = 'Backed By:';
-          img!.src = '/img/KNEU.png';
-          img!.alt = 'KNEU Startup School';
-          badgeExtraText!.textContent = 'KNEU Startup School';
-          badgeExtraText!.style.display = 'inline';
           currentState = 2;
         } 
+        // else if (currentState === 1) {
+        //   // Switch to KNEU
+        //   badgeText!.textContent = 'Backed By:';
+        //   img!.src = '/img/KNEU.png';
+        //   img!.alt = 'KNEU Startup School';
+        //   badgeExtraText!.textContent = 'KNEU Startup School';
+        //   badgeExtraText!.style.display = 'inline';
+        //   currentState = 2;
+        // } 
         else if (currentState === 2) {
           badgeText!.textContent = 'Highlighted By:';
           img!.src = '/img/uatech.png';
@@ -74,14 +75,14 @@ export default function Home() {
           badgeExtraText!.style.display = 'inline';
           currentState = 3;
         }
-        else if (currentState === 3) {
-          badgeText!.textContent = 'Participants:';
-          img!.src = '/img/websummit.png';
-          img!.alt = 'UA Tech';
-          badgeExtraText!.textContent = '2025';
-          badgeExtraText!.style.display = 'inline';
-          currentState = 4;
-        }
+        // else if (currentState === 3) {
+        //   badgeText!.textContent = 'Participants:';
+        //   img!.src = '/img/websummit.png';
+        //   img!.alt = 'UA Tech';
+        //   badgeExtraText!.textContent = '2025';
+        //   badgeExtraText!.style.display = 'inline';
+        //   currentState = 4;
+        // }
         else {
           badgeText!.textContent = 'Currently in:';
           img!.src = '/img/1991.png';
@@ -230,7 +231,7 @@ export default function Home() {
     .diagram img{max-width:100%; border-radius:14px; display:block}
 
     /* Features Dashboard Section */
-    .features-dashboard{display:grid; grid-template-columns: 1fr 1.2fr; gap:4rem; align-items:start; margin-top:3rem}
+    .features-dashboard{display:grid; grid-template-columns: 1fr 1.2fr; gap:1.5rem; align-items:start; margin-top:3rem}
     .features-list{display:flex; flex-direction:column; gap:1.5rem}
     .feature-item{position:relative; padding:2rem 2rem 2rem 2.5rem; border-left:4px solid transparent; border-radius:20px; background:linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)); backdrop-filter:blur(10px); transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor:pointer; border:1px solid rgba(255,106,61,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04)}
     .feature-item::before{content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg, #ff6a3d, #ff8f59, #ffb08a); transform:scaleY(0); transform-origin:top; transition:transform 0.4s ease; border-radius:0 4px 4px 0}
@@ -245,7 +246,7 @@ export default function Home() {
     .feature-item .read-more:hover{color:#fff; background:linear-gradient(135deg, #ff6a3d, #ff8f59); border-color:transparent; transform:translateX(4px); box-shadow:0 4px 16px rgba(255,106,61,0.3); gap:.75rem}
     .feature-item .read-more svg{transition:transform 0.3s ease}
     .feature-item .read-more:hover svg{transform:translateX(4px)}
-    .dashboard-preview{background:linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92)); backdrop-filter:blur(12px); border:1px solid rgba(255,106,61,0.1); border-radius:24px; padding:2rem; box-shadow:0 8px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,106,61,0.05); position:sticky; top:120px; transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1)}
+    .dashboard-preview{background:linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92)); backdrop-filter:blur(12px); border:1px solid rgba(255,106,61,0.1); border-radius:24px; padding:1rem; box-shadow:0 8px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,106,61,0.05); position:sticky; top:120px; transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1)}
     .dashboard-preview:hover{box-shadow:0 16px 48px rgba(255,106,61,0.15), 0 0 0 1px rgba(255,106,61,0.2); transform:translateY(-6px)}
     .dashboard-preview img{width:100%; height:auto; border-radius:16px; display:block; transition:transform 0.4s ease}
     .dashboard-preview:hover img{transform:scale(1.03)}
@@ -640,7 +641,7 @@ rgb(255, 144, 84);
           <a href="#architect">Preview</a>
           <a href="#partners">Partners</a>
         </div>
-        <a class="btn vibrant pulse" href="/start/demo">Launch app</a>
+        <a class="btn vibrant pulse" href="/start/demo">Go to app</a>
         <button class="hamb" aria-label="Open menu" onclick="document.querySelector('.mobile').showModal()">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
@@ -659,7 +660,7 @@ rgb(255, 144, 84);
       <a href="#certs">Cloud Providers</a>
       <a href="#architect">Preview</a>
       <a href="#partners">Partners</a>
-      <a class="btn" href="/start/demo">Launch app</a>
+      <a class="btn" href="/start/demo">Go to app</a>
     </div>
   </dialog>
 
@@ -799,7 +800,9 @@ rgb(255, 144, 84);
         </div>
       </div>
       <div class="dashboard-preview" id="architect">
-        <img src="/img/fullapp.png" alt="Cloud Blocks Dashboard Preview" />
+        <video autoplay loop muted playsinline poster="/img/fullapp.png">
+        <source src="/img/videoapp.mp4" type="video/mp4">
+      </video>
       </div>
     </div>
   </section>
