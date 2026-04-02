@@ -191,6 +191,7 @@ export default function Home() {
       display:flex; align-items:center; justify-content:center; position:relative;
     }
     .hero-ill svg{width:78%; max-width:520px}
+    .hero-ill img{width:72%; max-width:480px; height:auto; object-fit:contain; display:block; position:relative; z-index:1}
 
     /* Ribbon statement */
     .ribbon{position:relative; margin:0rem 0 0; width:min(var(--container), 92%); margin-inline:auto; padding-inline:clamp(1rem, 3vw, 2rem)}
@@ -516,6 +517,12 @@ rgb(255, 144, 84);
     max-width: 520px;
     height: auto;
   }
+
+  .hero-ill img {
+    width: 85%;
+    max-width: 480px;
+    height: auto;
+  }
   
   .features-grid {
     display: grid;
@@ -675,7 +682,7 @@ rgb(255, 144, 84);
         </div>
        <h1>From <span class="orange-text">Concept</span> to <span class="orange-text">Cloud</span> in Minutes.</h1>
         <p class="lead">
-        Use AI Cloud Architect to turn complex requirements into live cloud environments, discover alternatives, do security cheks and risks.</p>
+        Use AI Cloud Architect tool to turn complex requirements into live cloud environments, discover alternatives, do security cheks and risks.</p>
         <div class="hero-cta">
           <a class="btn" href="https://app.cloudblocks.tech">
             <span>Start creating with AI</span>
@@ -694,10 +701,8 @@ rgb(255, 144, 84);
       </div>
       <div class="hero-ill" aria-hidden="true" style="overflow: hidden; width: 100%; max-width: 900px; margin-inline: auto;">
        <img 
-        src="/img/chat3.png" 
+        src="/img/diagram1.png" 
         alt="Cloud Blocks real environment preview" 
-        class="swing"
-        style="width:100%; height:100%; object-fit:contain; display:block; position:relative; z-index:1;"
       />
       </div>
     </div>
