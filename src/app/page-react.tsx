@@ -683,7 +683,7 @@ export default function Home() {
           </div>
 
           <div className='mt-12 pt-8 border-t-2 border-gray-200 text-gray-600 text-lg'>
-            © {new Date().getFullYear()} blc. All rights reserved.
+            © {new Date().getFullYear()} Cloud Blocks. All rights reserved.
           </div>
         </div>
       </footer>

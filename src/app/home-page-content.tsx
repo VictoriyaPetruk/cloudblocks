@@ -100,7 +100,7 @@ export default function HomePageContent() {
                 className="btn secondary"
                 href="https://cal.com/viktoriia-petruk-2zyfcw/30min?overlayCalendar=true&date=2026-01-20"
               >
-                <span> Book Free Consultation call</span>
+                <span>Book a free consultation call</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                   <line x1="16" y1="2" x2="16" y2="6" />
@@ -174,7 +174,7 @@ export default function HomePageContent() {
               </svg>
             </span>
             <div>
-              <h4>Alternatives on each servies</h4>
+              <h4>Alternatives for each service</h4>
               <p>Discover the best alternatives for your solution to save on costs and scale.</p>
             </div>
           </article>
@@ -182,7 +182,7 @@ export default function HomePageContent() {
       </section>
 
       <section id="features-dashboard" className="section container">
-        <h2>How it works:</h2>
+        <h2>How it works</h2>
         <div className="features-dashboard">
           <div className="features-list">
             <div className="feature-item active">
@@ -194,7 +194,7 @@ export default function HomePageContent() {
             </div>
             <div className="feature-item">
               <h3>Get architecture diagram</h3>
-              <p>Get fully diagram for different cloud environments.</p>
+              <p>Get a full diagram for different cloud environments.</p>
               <a href="/start/demo" className="read-more">
                 Download diagram →
               </a>
@@ -207,8 +207,8 @@ export default function HomePageContent() {
               </a>
             </div>
             <div className="feature-item">
-              <h3>Improve yout architecture with AI</h3>
-              <p>Check Security, Risks, Terraform scripts and discover alternative services.</p>
+              <h3>Improve your architecture with AI</h3>
+              <p>Review security, risks, and Terraform scripts, and discover alternative services.</p>
               <a href="/start/demo" className="read-more">
                 Start now →
               </a>
@@ -240,11 +240,11 @@ export default function HomePageContent() {
 
       <section className="partner-section" id="partners">
         <div className="inner">
-          <h2>Get more cloud credits from our partner:</h2>
+          <h2>Get more cloud credits from our partner</h2>
           <div className="partner-info">
             <img src="/img/spendbase.png" alt="Spendbase logo" className="partner-logo" width={160} height={48} />
             <p className="partner-description">
-              Spendabse helps startups optimize cloud spending and unlock extra credits across major cloud providers.
+              Spendbase helps startups optimize cloud spending and unlock extra credits across major cloud providers.
             </p>
           </div>
           <div className="partner-buttons">
@@ -272,7 +272,7 @@ export default function HomePageContent() {
 
       <section className="testimonials-section" aria-label="Customer testimonials">
         <div className="container">
-          <h2>Customer Feedbacks</h2>
+          <h2>Customer feedback</h2>
           <div className="marquee-wrapper">
             <div className="marquee">
               <div className="marquee-content">
@@ -339,7 +339,7 @@ export default function HomePageContent() {
                     ★★★★★
                   </div>
                   <blockquote className="testimonial-text">
-                    CloudBlocks helped me to learn in building cloud systems and get new promotion in architecture role.
+                    CloudBlocks helped me learn to build cloud systems and earn a promotion to an architecture role.
                   </blockquote>
                 </figure>
               </div>
@@ -368,7 +368,7 @@ export default function HomePageContent() {
                   </div>
                   <div className="testimonial-rating">★★★★★</div>
                   <blockquote className="testimonial-text">
-                    The AI-powered architecture tool is incredible. It understands our requirements and help me to build my
+                    The AI-powered architecture tool is incredible. It understands our requirements and helps me build my
                     projects.
                   </blockquote>
                 </figure>
@@ -444,7 +444,7 @@ export default function HomePageContent() {
           <div className="foot" />
         </div>
         <div className="container copyright">
-          © {new Date().getFullYear()} blc. All rights reserved.
+          © {new Date().getFullYear()} Cloud Blocks. All rights reserved.
         </div>
       </footer>
     </>
