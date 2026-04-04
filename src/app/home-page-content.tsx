@@ -87,8 +87,7 @@ export default function HomePageContent() {
               From <span className="orange-text">Concept</span> to <span className="orange-text">Cloud</span> in Minutes.
             </h1>
             <p className="lead">
-              Use AI Cloud Architect tool to turn complex requirements into live cloud environments, discover alternatives, do
-              security cheks and risks.
+            Your personal AI Cloud Architect. Turn complex requirements into live environments, compare provider alternatives, and run automated security audits before you deploy.
             </p>
             <div className="hero-cta">
               <a className="btn" href="https://app.cloudblocks.tech">
