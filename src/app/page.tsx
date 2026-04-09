@@ -98,11 +98,12 @@ export default function Home() {
     h1{font-size: clamp(2rem, 3.4vw + 1rem, 3.6rem); line-height:1.05; letter-spacing:-.03em; margin:.5rem 0 1.1rem}
     .animated-badge{margin-bottom:0.55rem; font-size:clamp(14px, 2vw, 22px); color:var(--muted); font-weight:500}
     .animated-badge img{height:auto; max-height:50px; width:auto; max-width:min(220px,42vw); object-fit:contain; display:block; flex-shrink:0}
-    .hero-badges{display:flex; flex-wrap:wrap; align-items:center; gap:0.65rem 1.1rem; margin:0 0 1rem 0; line-height:0}
-    .hero-badges .startup-fame-badge, .hero-badges .microsoft-startups-badge{margin:0}
+    .hero-badges{display:flex; flex-wrap:wrap; align-items:center; gap:0.65rem 1.1rem; margin:1.1rem 0 1.25rem 0; line-height:0}
+    .hero-badges .startup-fame-badge, .hero-badges .microsoft-startups-badge, .hero-badges .ai-agents-directory-badge{margin:0}
     .hero-badges a{display:inline-block; line-height:0}
     .hero-badges .startup-fame-badge img{display:block; width:auto; max-width:min(224px, 92vw); height:auto}
     .hero-badges .microsoft-startups-badge img{display:block; width:auto; max-height:min(48px, 13vw); height:auto}
+    .hero-badges .ai-agents-directory-badge img{display:block; width:auto; max-width:min(200px, 92vw); max-height:min(50px, 13vw); height:auto}
     h2{font-weight: 700;}
     .lead{font-size:1.05rem; color:#4b5563; max-width:44ch}
     .hero-cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.4rem}

@@ -83,6 +83,12 @@ export default function HomePageContent() {
         <div className="container wrap">
           <div>
             <AnimatedBadge />
+            <h1 id="hero-heading">
+              From <span className="orange-text">Concept</span> to <span className="orange-text">Cloud</span> in Minutes.
+            </h1>
+            <p className="lead">
+            Your personal AI Cloud Architect. Turn complex requirements into live environments, compare provider alternatives, and run automated security audits before you deploy.
+            </p>
             <div className="hero-badges">
               <div className="startup-fame-badge">
                 <a
@@ -98,27 +104,21 @@ export default function HomePageContent() {
                   />
                 </a>
               </div>
-              <div className="microsoft-startups-badge">
+              <div className="ai-agents-directory-badge">
                 <a
-                  href="https://www.microsoft.com/startups"
+                  href="https://aiagentsdirectory.com/agent/cloud-blocks?utm_source=badge&utm_medium=referral&utm_campaign=free_listing&utm_content=cloud-blocks"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="/img/microsoft-for-startups-badge.png"
-                    alt="Proud to partner with Microsoft for Startups"
-                    width={786}
-                    height={336}
+                    src="https://aiagentsdirectory.com/featured-badge.svg?v=2024"
+                    alt="Cloud Blocks - Featured AI Agent on AI Agents Directory"
+                    width={200}
+                    height={50}
                   />
                 </a>
               </div>
             </div>
-            <h1 id="hero-heading">
-              From <span className="orange-text">Concept</span> to <span className="orange-text">Cloud</span> in Minutes.
-            </h1>
-            <p className="lead">
-            Your personal AI Cloud Architect. Turn complex requirements into live environments, compare provider alternatives, and run automated security audits before you deploy.
-            </p>
             <div className="hero-cta">
               <a className="btn" href="https://app.cloudblocks.tech">
                 <span>Start creating with AI</span>

@@ -20,10 +20,9 @@ const SLIDES: BadgeSlide[] = [
     extra: "IdeasLab accelerator",
   },
   {
-    label: "Participants:",
-    imageSrc: "/img/websummit.png",
+    label: "Partner:",
+    imageSrc: "/img/microsoft-for-startups-badge.png",
     imageAlt: "Web Summit",
-    extra: "2025",
   },
   {
     label: "Highlighted By:",
