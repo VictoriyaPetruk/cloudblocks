@@ -83,6 +83,36 @@ export default function HomePageContent() {
         <div className="container wrap">
           <div>
             <AnimatedBadge />
+            <div className="hero-badges">
+              <div className="startup-fame-badge">
+                <a
+                  href="https://startupfa.me/s/cloud-blocks-1?utm_source=cloudblocks.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="https://startupfa.me/badges/featured-badge-small.webp"
+                    alt="Cloud Blocks - Featured on Startup Fame"
+                    width={224}
+                    height={36}
+                  />
+                </a>
+              </div>
+              <div className="microsoft-startups-badge">
+                <a
+                  href="https://www.microsoft.com/startups"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/img/microsoft-for-startups-badge.png"
+                    alt="Proud to partner with Microsoft for Startups"
+                    width={786}
+                    height={336}
+                  />
+                </a>
+              </div>
+            </div>
             <h1 id="hero-heading">
               From <span className="orange-text">Concept</span> to <span className="orange-text">Cloud</span> in Minutes.
             </h1>
