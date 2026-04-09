@@ -12,7 +12,7 @@ type BadgeSlide = {
 
 /** Order: 1991 → IdeasLab → Web Summit → UA Tech → repeat */
 const SLIDES: BadgeSlide[] = [
-  { label: "Currently in:", imageSrc: "/img/1991.png", imageAlt: "1991 Accelerator" },
+  { label: "Backed By:", imageSrc: "/img/1991.png", imageAlt: "1991 Accelerator" },
   {
     label: "Backed By:",
     imageSrc: "/img/IdeasLab.png",
