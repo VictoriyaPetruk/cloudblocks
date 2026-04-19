@@ -118,6 +118,15 @@ export default function HomePageContent() {
                   />
                 </a>
               </div>
+              <div className="peerpush-badge">
+                <a href="https://peerpush.net/p/cloud-blocks" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="https://peerpush.net/p/cloud-blocks/badge.png"
+                    alt="Cloud Blocks badge"
+                    width={230}
+                  />
+                </a>
+              </div>
             </div>
             <div className="hero-cta">
               <a className="btn" href="https://app.cloudblocks.tech">
